@@ -69,7 +69,7 @@ $ pluck -a '<' -a 'href' -a '"' -d '"' -l 10 -u https://nytimes.com
 
 You can also specify multiple things to pluck, simultaneously, by listing the *activators* and the *deactivator* in a TOML file. The file is only read *once*, for any number of things to specified to pluck.
 
-For example, lets say we want to parse ingredients and the title of a recipe. Make a file `config.toml`:
+For example, lets say we want to parse ingredients and the title of [a recipe](https://goo.gl/DHmqmv). Make a file `config.toml`:
 
 ```toml
 [[pluck]]
@@ -87,7 +87,7 @@ limit = -1
 The title follows normal HTML and the ingredients were determined by quickly inspecting the HTML source code of the target site. Then, pluck it with,
 
 ```bash
-$ pluck -c config.toml -u http://www.foodnetwork.com/recipes/food-network-kitchen/15-minute-shrimp-tacos-with-spicy-chipotle-slaw-3676441
+$ pluck -c config.toml -u https://goo.gl/DHmqmv
 {
     "ingredients": [
         "1 pound medium (26/30) peeled and deveined shrimp, tails removed",
