@@ -1,0 +1,12 @@
+# http://www.foodnetwork.com/recipes/food-network-kitchen/15-minute-shrimp-tacos-with-spicy-chipotle-slaw-3676441
+
+[[pluck]]
+activators = ["<title>"]
+deactivator = "</title>"
+name = "title"
+
+[[pluck]]
+activators = ["<label","Ingredient",">"]
+deactivator = "<"
+limit = -1
+name = "ingredients"

@@ -18,7 +18,7 @@ def parseHTML():
     result['options'] = []
     for j, i in enumerate(doc.xpath('//option[@class="level-0"]')):
         result['options'].append(i.text_content())
-        if j > 10:
+        if j == 3:
             break
     return result
 
