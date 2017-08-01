@@ -18,7 +18,7 @@ func init() {
 
 func main() {
 	t := time.Now()
-	r, _ := os.Open("test.txt")
+	r, _ := os.Open("test2.txt")
 	type Search struct {
 		After          []byte   // wait until `After` appears beforing looking for activator
 		Activators     [][]byte // wait until all these are seen to activate
@@ -48,11 +48,12 @@ func main() {
 			maxSize = len(phrase)
 		}
 	}
-	carryOverBytes := []byte{}
+	byteBuffer := []byte{}
 	bytesRead := make([]byte, maxSize*2+2)
 	for {
 		_, errRead := r.Read(bytesRead)
 		bytesRead = append(carryOverBytes, bytesRead...)
+		log.Info(string(bytesRead))
 		n := len(bytesRead)
 		if len(bytesRead) == 0 {
 			break
@@ -97,12 +98,14 @@ func main() {
 					s.i++
 				}
 				log.Debugf("Added %d bytes", endIndex)
+				carryOverBytes = bytesRead[endIndex:]
 			} else {
 				for _, b := range bytesRead[startIndex:endIndex] {
 					s.capture[s.i] = b
 					s.i++
 				}
 				log.Debugf("Added %d bytes", endIndex-startIndex)
+				carryOverBytes = bytesRead[endIndex:]
 			}
 
 			if deactivated {
@@ -112,10 +115,19 @@ func main() {
 				s.numActivated = 0
 				s.i = 0
 				s.capture = make([]byte, 1000)
-				carryOverBytes = bytesRead[endIndex+len(s.Deactivator)-1:]
 			}
 		}
 
+		if len(carryOverBytes) > 2*maxSize {
+			carryOverBytes = carryOverBytes[len(carryOverBytes)-2*maxSize:]
+		}
+		if len(carryOverBytes) == 0 {
+			log.Info("Adding new carry over bytes")
+			log.Info(string(bytesRead))
+			carryOverBytes = make([]byte, len(bytesRead))
+			copy(bytesRead, carryOverBytes)
+			log.Info(string(carryOverBytes))
+		}
 		if errRead == io.EOF {
 			break
 		}
