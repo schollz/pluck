@@ -48,11 +48,15 @@ func main() {
 			maxSize = len(phrase)
 		}
 	}
-
+	carryOverBytes := []byte{}
 	bytesRead := make([]byte, maxSize*2+2)
 	for {
-		n, errRead := r.Read(bytesRead)
-	StartAgain:
+		_, errRead := r.Read(bytesRead)
+		bytesRead = append(carryOverBytes, bytesRead...)
+		n := len(bytesRead)
+		if len(bytesRead) == 0 {
+			break
+		}
 		// Loop, and keep looping while we find activators
 		// increment startIndex upon finding activators
 		startIndex := 0
@@ -108,9 +112,7 @@ func main() {
 				s.numActivated = 0
 				s.i = 0
 				s.capture = make([]byte, 1000)
-
-				bytesRead = bytesRead[endIndex+len(s.Deactivator):]
-				goto StartAgain
+				carryOverBytes = bytesRead[endIndex+len(s.Deactivator)-1:]
 			}
 		}
 
