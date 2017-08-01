@@ -1,140 +1,146 @@
 package main
 
 import (
-	"bytes"
-	"fmt"
+	"bufio"
+	"encoding/json"
 	"io"
+	"io/ioutil"
 	"os"
-	"time"
+	"strconv"
 
+	"github.com/pkg/errors"
 	log "github.com/sirupsen/logrus"
+	"gopkg.in/yaml.v2"
 )
 
 func init() {
 	// log.SetFormatter(&log.JSONFormatter{})
-	// log.SetOutput(os.Stdout)
-	log.SetLevel(log.DebugLevel)
+	// log.SetOutput(os[i].Stdout)
+	log.SetLevel(log.WarnLevel)
 }
 
 func main() {
-	t := time.Now()
-	r, _ := os.Open("test2.txt")
-	type Search struct {
-		After          []byte   // wait until `After` appears beforing looking for activator
-		Activators     [][]byte // wait until all these are seen to activate
-		Deactivator    []byte
-		Limit          int
-		Captured       [][]byte
-		numActivated   int
-		numDeactivated int
-		capture        []byte
-		i              int
+
+}
+
+func parseFile() string {
+
+	r1, _ := os.Open("test.txt")
+	r := bufio.NewReader(r1)
+
+	type Config struct {
+		Activators  []string
+		Deactivator string
+		Name        string
+		Limit       int
 	}
-	s := Search{
-		After:        []byte("laskjdf"),
-		Activators:   [][]byte{[]byte(`<option class="level-0" `), []byte(`>`)},
-		Deactivator:  []byte(`</option>`),
-		Limit:        10,
-		Captured:     [][]byte{},
-		numActivated: 0,
-		capture:      make([]byte, 500),
-		i:            0,
+	var config []Config
+	b, _ := ioutil.ReadFile("config.yaml")
+	err := yaml.Unmarshal([]byte(b), &config)
+	if err != nil {
+		log.Fatalf("error: %v", err)
+	}
+	type Search struct {
+		Activators   [][]byte // wait until all these are seen to activate
+		Deactivator  []byte
+		Limit        int
+		Name         string
+		captured     [][]byte
+		numActivated int
+		captureByte  []byte
+		captureI     int
+		activeI      int
+		deactiveI    int
+	}
+	s := make([]Search, len(config))
+	for i := range config {
+		if config[i].Limit == 0 {
+			config[i].Limit = 1
+		}
+		if config[i].Name == "" {
+			config[i].Name = strconv.Itoa(i)
+		}
+		s[i] = Search{
+			Activators:   make([][]byte, len(config[i].Activators)),
+			Deactivator:  []byte(config[i].Deactivator),
+			Limit:        config[i].Limit,
+			Name:         config[i].Name,
+			captured:     [][]byte{},
+			numActivated: 0,
+			captureByte:  make([]byte, 10000),
+			captureI:     0,
+			activeI:      0,
+			deactiveI:    0,
+		}
+		for j := range config[i].Activators {
+			s[i].Activators[j] = []byte(config[i].Activators[j])
+		}
 	}
 
-	// Find largest activator/deactivator
-	maxSize := 0
-	for _, phrase := range append(s.Activators, s.Deactivator) {
-		if len(phrase) > maxSize {
-			maxSize = len(phrase)
-		}
-	}
-	byteBuffer := []byte{}
-	bytesRead := make([]byte, maxSize*2+2)
 	for {
-		_, errRead := r.Read(bytesRead)
-		bytesRead = append(carryOverBytes, bytesRead...)
-		log.Info(string(bytesRead))
-		n := len(bytesRead)
-		if len(bytesRead) == 0 {
-			break
-		}
-		// Loop, and keep looping while we find activators
-		// increment startIndex upon finding activators
-		startIndex := 0
-		for {
-			if s.numActivated == len(s.Activators) {
-				log.Debug("Activated")
-				break
-			}
-			index := bytes.Index(bytesRead[startIndex:], s.Activators[s.numActivated])
-			if index > -1 {
-				log.Debug("Activating")
-				startIndex = startIndex + index + len(s.Activators[s.numActivated])
-				s.numActivated++
+		curByte, errRead := r.ReadByte()
+		for i := range s {
+			if len(s[i].captured) == s[i].Limit {
 				continue
 			}
-			break
-		}
-
-		if s.numActivated == len(s.Activators) {
-			// Check if deactivated
-			deactivated := false
-			endIndex := bytes.Index(bytesRead[startIndex:], s.Deactivator)
-			if endIndex > -1 {
-				log.Debug("Deactivating")
-				deactivated = true
-				endIndex += startIndex
-			} else {
-				endIndex = n
-			}
-
-			// add bytes from known activator to deactivator
-			log.Debug(startIndex, endIndex)
-			if startIndex > endIndex {
-				// edge case where you have another thing starting as one is ending
-				log.Debug("Edge case")
-				for _, b := range bytesRead[0:endIndex] {
-					s.capture[s.i] = b
-					s.i++
+			if s[i].numActivated < len(s[i].Activators) {
+				// look for activators
+				if curByte == s[i].Activators[s[i].numActivated][s[i].activeI] {
+					s[i].activeI++
+					if s[i].activeI == len(s[i].Activators[s[i].numActivated]) {
+						log.Info(string(curByte), "Activated")
+						s[i].numActivated++
+						s[i].activeI = 0
+					}
+				} else {
+					s[i].activeI = 0
 				}
-				log.Debugf("Added %d bytes", endIndex)
-				carryOverBytes = bytesRead[endIndex:]
 			} else {
-				for _, b := range bytesRead[startIndex:endIndex] {
-					s.capture[s.i] = b
-					s.i++
+				// add to capture
+				s[i].captureByte[s[i].captureI] = curByte
+				s[i].captureI++
+				// look for deactivators
+				if curByte == s[i].Deactivator[s[i].deactiveI] {
+					s[i].deactiveI++
+					if s[i].deactiveI == len(s[i].Deactivator) {
+						log.Info(string(curByte), "Deactivated")
+						// add capture
+						log.Info(string(s[i].captureByte[:s[i].captureI-len(s[i].Deactivator)]))
+						tempByte := make([]byte, s[i].captureI-len(s[i].Deactivator))
+						copy(tempByte, s[i].captureByte[:s[i].captureI-len(s[i].Deactivator)])
+						s[i].captured = append(s[i].captured, tempByte)
+						// reset
+						s[i].numActivated = 0
+						s[i].deactiveI = 0
+						s[i].captureI = 0
+					}
+				} else {
+					s[i].activeI = 0
 				}
-				log.Debugf("Added %d bytes", endIndex-startIndex)
-				carryOverBytes = bytesRead[endIndex:]
 			}
 
-			if deactivated {
-				log.Debug("Reseting")
-				// add and reset
-				s.Captured = append(s.Captured, s.capture[:s.i])
-				s.numActivated = 0
-				s.i = 0
-				s.capture = make([]byte, 1000)
-			}
 		}
 
-		if len(carryOverBytes) > 2*maxSize {
-			carryOverBytes = carryOverBytes[len(carryOverBytes)-2*maxSize:]
-		}
-		if len(carryOverBytes) == 0 {
-			log.Info("Adding new carry over bytes")
-			log.Info(string(bytesRead))
-			carryOverBytes = make([]byte, len(bytesRead))
-			copy(bytesRead, carryOverBytes)
-			log.Info(string(carryOverBytes))
-		}
 		if errRead == io.EOF {
 			break
 		}
 	}
-	r.Close()
-	fmt.Println(time.Since(t))
-	for _, r := range s.Captured {
-		fmt.Println(string(r))
+	r1.Close()
+	result := make(map[string]interface{})
+	for i := range s {
+		if len(s[i].captured) == 1 {
+			result[s[i].Name] = string(s[i].captured[0])
+		} else {
+			results := make([]string, len(s[i].captured))
+			for j, r := range s[i].captured {
+				results[j] = string(r)
+			}
+			result[s[i].Name] = results
+		}
 	}
+	resultJson, err := json.MarshalIndent(result, "", "    ")
+	if err != nil {
+		log.Error(errors.Wrap(err, "result marshalling failed"))
+	}
+	return string(resultJson)
 }
