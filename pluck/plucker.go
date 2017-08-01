@@ -112,7 +112,7 @@ func (p *plucker) Load(f string) (err error) {
 // a map (p.result) with the finished results
 func (p *plucker) PluckString(s string) (err error) {
 	r := bufio.NewReader(strings.NewReader(s))
-	return p.pluck(r)
+	return p.Pluck(r)
 }
 
 // PluckFile takes a file as input
@@ -125,7 +125,7 @@ func (p *plucker) PluckFile(f string) (err error) {
 		return
 	}
 	r := bufio.NewReader(r1)
-	return p.pluck(r)
+	return p.Pluck(r)
 }
 
 // PluckWeb takes a URL as input
@@ -138,10 +138,12 @@ func (p *plucker) PluckURL(url string) (err error) {
 	}
 	defer resp.Body.Close()
 	r := bufio.NewReader(resp.Body)
-	return p.pluck(r)
+	return p.Pluck(r)
 }
 
-func (p *plucker) pluck(r *bufio.Reader) (err error) {
+// Pluck takes a buffered reader stream and
+// extracts the text from it
+func (p *plucker) Pluck(r *bufio.Reader) (err error) {
 	for {
 		curByte, errRead := r.ReadByte()
 		allLimitsReached := true
