@@ -9,11 +9,11 @@
 
 <p align="center">Pluck text from a file.</p>
 
-*pluck* makes text extraction intuitive and [fast](https://github.com/schollz/pluck#current-benchmark). You can specify an extraction in nearly the same way you'd tell a person trying to extract the text by hand: "Okay Bob, every time you see *X* and *Y*, copy down everything until you see *Z*." In *pluck*, *X* and *Y* are called *activators* and *Z* is called the *deactivator*. The file/URL being plucked is streamed byte-by-byte and a running tally ie kept of the position of the *activators*. Once all *activators* are found, the bytes are saved to a buffer, which is added to a list of results once the *deactivator* is found. The file is read only once, and all contents being extracted are done so simultaneously.
+*pluck* makes text extraction intuitive and [fast](https://github.com/schollz/pluck#current-benchmark). You can specify an extraction in nearly the same way you'd tell a person trying to extract the text by hand: "Okay Bob, every time you see *X* and *Y*, copy down everything until you see *Z*." In *pluck*, *X* and *Y* are called *activators* and *Z* is called the *deactivator*. The file/URL being plucked is streamed byte-by-byte into a finite state machine that keeps track of *activators*. Once all *activators* are found, the bytes are saved to a buffer, which is added to a list of results once the *deactivator* is found. The file is read only once, and multiple queries are extracted simultaneously.
 
 ### Why? 
 
-*pluck* was made as simpler and faster alternative to `lxml`. *pluck* doesn't just work with HTML/XML though, it will work with any text that you can specify a pattern. Though simple, *pluck* allows complex procedures like [extracting text in nested HTML tags](https://github.com/schollz/pluck#use-config-file), or [extracting the content of an attribute of a HTML tag](https://github.com/schollz/pluck#basic-usage). *pluck* may not work in all scenarios, so do not consider it a replacement for xpath.
+*pluck* was made as a simpler and faster alternative to xpath and regexp. Through simple declarations, *pluck* allows complex procedures like [extracting text in nested HTML tags](https://github.com/schollz/pluck#use-config-file), or [extracting the content of an attribute of a HTML tag](https://github.com/schollz/pluck#basic-usage). *pluck* may not work in all scenarios, so do not consider it a replacement for xpath or regexp.
 
 
 Getting Started
@@ -122,12 +122,12 @@ $ go test -cover
 
 ## Current benchmark
 
-The [state of the art is `lxml`, based on libxml2](http://lxml.de/performance.html). Here is a comparision for plucking the same data from the same file, run on Windows i7-3770 CPU @ 3.40GHz.
+The [state of the art for xpath is `lxml`, based on libxml2](http://lxml.de/performance.html). Here is a comparision for plucking the same data from the same file, run on Windows i7-3770 CPU @ 3.40GHz.
 
 | Language  | Time (ms) |
 | ------------- | ------------- |
-| Python3.6 `lxml`  | 3.8  |
-| *pluck*  | 0.8  |
+| `lxml` (Python3.6)  | 3.8  |
+| pluck | 0.8  |
 
 *pluck* has the added benefit in that, unlike `lxml`, adding more things to extract does not slow it down. Everything in *pluck* is searched simultaneously as the file is streamed.
 
@@ -136,7 +136,7 @@ The [state of the art is `lxml`, based on libxml2](http://lxml.de/performance.ht
 - [ ] Allow OR statements (e.g `'|"`). 
 - [ ] Quotes match to quotes (single or double)?
 - [ ] Allow piping from standard in?
-- [ ] API to handle strings, e.g. `PluckString(s string)`
+- [x] API to handle strings, e.g. `PluckString(s string)`
 
 License
 ========

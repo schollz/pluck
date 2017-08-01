@@ -8,6 +8,7 @@ import (
 	"net/http"
 	"os"
 	"strconv"
+	"strings"
 
 	"github.com/BurntSushi/toml"
 	"github.com/pkg/errors"
@@ -106,7 +107,16 @@ func (p *plucker) Load(f string) (err error) {
 	return
 }
 
-// Pluck uses the specified parameters and generates
+// PluckString takes a string as input
+// and uses the specified parameters and generates
+// a map (p.result) with the finished results
+func (p *plucker) PluckString(s string) (err error) {
+	r := bufio.NewReader(strings.NewReader(s))
+	return p.pluck(r)
+}
+
+// PluckFile takes a file as input
+// and uses the specified parameters and generates
 // a map (p.result) with the finished results
 func (p *plucker) PluckFile(f string) (err error) {
 	r1, err := os.Open(f)
@@ -118,7 +128,8 @@ func (p *plucker) PluckFile(f string) (err error) {
 	return p.pluck(r)
 }
 
-// PluckWeb uses the specified parameters and generates
+// PluckWeb takes a URL as input
+// and uses the specified parameters and generates
 // a map (p.result) with the finished results
 func (p *plucker) PluckURL(url string) (err error) {
 	resp, err := http.Get(url)
