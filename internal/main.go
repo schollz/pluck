@@ -23,35 +23,45 @@ func main() {
 
 }
 
-func parseFile(f string) string {
+type Plucker struct {
+	pluckers []PluckUnit
+}
 
-	r1, _ := os.Open("test.txt")
+type PluckUnit struct {
+	Activators   []string
+	Deactivator  string
+	Name         string
+	Limit        int
+	activators   [][]byte
+	deactivator  []byte
+	captured     [][]byte
+	numActivated int
+	captureByte  []byte
+	captureI     int
+	activeI      int
+	deactiveI    int
+}
+
+func New() (*Plucker, error) {
+	p := new(Plucker)
+	return p, nil
+}
+
+func (p *Plucker) LoadConfig(f string) (err error) {
+	b, _ := ioutil.ReadFile("config.yaml")
+	err = yaml.Unmarshal([]byte(b), &config)
+	return
+}
+
+func (p *Plucker) parseFile(f string) (result map[string]interface{}, err error) {
+	result = make(map[string]interface{})
+
+	r1, err := os.Open(f)
+	if err != nil {
+		return
+	}
 	r := bufio.NewReader(r1)
 
-	type Config struct {
-		Activators  []string
-		Deactivator string
-		Name        string
-		Limit       int
-	}
-	var config []Config
-	b, _ := ioutil.ReadFile("config.yaml")
-	err := yaml.Unmarshal([]byte(b), &config)
-	if err != nil {
-		log.Fatalf("error: %v", err)
-	}
-	type Search struct {
-		Activators   [][]byte // wait until all these are seen to activate
-		Deactivator  []byte
-		Limit        int
-		Name         string
-		captured     [][]byte
-		numActivated int
-		captureByte  []byte
-		captureI     int
-		activeI      int
-		deactiveI    int
-	}
 	s := make([]Search, len(config))
 	for i := range config {
 		if config[i].Limit == 0 {
