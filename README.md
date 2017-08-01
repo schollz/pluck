@@ -7,9 +7,9 @@
 <img src="https://img.shields.io/badge/coverage-95%25-green.svg?style=flat-square" alt="Code Coverage">
 </p>
 
-<p align="center">Pluck text from stream in a fast an intuitive way.  :rooster:</p>
+<p align="center">Pluck text from stream in a fast and intuitive way.  :rooster:</p>
 
-*pluck* makes text extraction intuitive and [fast](https://github.com/schollz/pluck#current-benchmark). You can specify an extraction in nearly the same way you'd tell a person trying to extract the text by hand: "Okay Bob, every time you see *X* and *Y*, copy down everything until you see *Z*." In *pluck*, *X* and *Y* are called *activators* and *Z* is called the *deactivator*. The file/URL being plucked is streamed byte-by-byte into a finite state machine that keeps track of *activators*. Once all *activators* are found, the bytes are saved to a buffer, which is added to a list of results once the *deactivator* is found. The file is read only once, and multiple queries are extracted simultaneously.
+*pluck* makes text extraction intuitive and [fast] (https://github.com/schollz/pluck#current-benchmark). You can specify an extraction in nearly the same way you'd tell a person trying to extract the text by hand: "Okay Bob, every time you see *X* and *Y*, copy down everything until you see *Z*." In *pluck*, *X* and *Y* are called *activators* and *Z* is called the *deactivator*. The file/URL being plucked is streamed byte-by-byte into a finite state machine that keeps track of *activators*. Once all *activators* are found, the bytes are saved to a buffer, which is added to a list of results once the *deactivator* is found. The file is read only once, and multiple queries are extracted simultaneously.
 
 ### Why? 
 
@@ -122,7 +122,7 @@ $ go test -cover
 
 ## Current benchmark
 
-The [state of the art for xpath is `lxml`, based on libxml2](http://lxml.de/performance.html). Here is a comparision for plucking the same data from the same file, run on Windows i7-3770 CPU @ 3.40GHz.
+The [state of the art for xpath is `lxml`, based on libxml2](http://lxml.de/performance.html). Here is a comparison for plucking the same data from the same file, run on Windows i7-3770 CPU @ 3.40GHz.
 
 | Language  | Time (ms) |
 | ------------- | ------------- |
