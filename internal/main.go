@@ -23,7 +23,7 @@ func main() {
 
 }
 
-func parseFile() string {
+func parseFile(f string) string {
 
 	r1, _ := os.Open("test.txt")
 	r := bufio.NewReader(r1)
