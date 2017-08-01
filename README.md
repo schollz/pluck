@@ -5,6 +5,7 @@ A simple file parser. It is agnostic to type of file (HTML / XML / plain). It is
 ## Benchmark
 
 The state of the art is `lxml`.
+
 | Language  | Time (ms) |
 | ------------- | ------------- |
 | Python `lxml`  | 3.8  |
