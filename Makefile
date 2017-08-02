@@ -16,7 +16,7 @@ linuxarm:
 .PHONY: linux64
 linux64:
 	env GOOS=linux GOARCH=amd64 go build ${LDFLAGS} -o dist/pluck_linux_amd64
-	# cd dist && upx --brute pluck_linux_amd64
+	cd dist && upx --brute pluck_linux_amd64
 
 .PHONY: windows
 windows:
