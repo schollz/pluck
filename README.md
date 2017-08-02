@@ -7,14 +7,19 @@
 <img src="https://img.shields.io/badge/coverage-95%25-green.svg?style=flat-square" alt="Code Coverage">
 </p>
 
-<p align="center">Pluck text from stream in a fast and intuitive way.  :rooster:</p>
+<p align="center">Pluck text in a fast and intuitive way. :rooster:</p>
 
-*pluck* makes text extraction intuitive and [fast] (https://github.com/schollz/pluck#current-benchmark). You can specify an extraction in nearly the same way you'd tell a person trying to extract the text by hand: "OK Bob, every time you find *X* and then *Y*, copy down everything you see until you encounter *Z*." In *pluck*, *X* and *Y* are called *activators* and *Z* is called the *deactivator*. The file/URL being plucked is streamed byte-by-byte into a finite state machine that keeps track of *activators*. Once all *activators* are found, the bytes are saved to a buffer, which is added to a list of results once the *deactivator* is found. The file is read only once, and multiple queries are extracted simultaneously.
+*pluck* makes text extraction intuitive and [fast](https://github.com/schollz/pluck#current-benchmark). You can specify an extraction in nearly the same way you'd tell a person trying to extract the text by hand: "OK Bob, every time you find *X* and then *Y*, copy down everything you see until you encounter *Z*." 
+
+In *pluck*, *X* and *Y* are called *activators* and *Z* is called the *deactivator*. The file/URL being plucked is streamed byte-by-byte into a finite state machine. Once all *activators* are found, the following bytes are saved to a buffer, which is added to a list of results once the *deactivator* is found. The file is read only once, and multiple queries are extracted simultaneously.
 
 ### Why? 
 
 *pluck* was made as a simpler and faster alternative to xpath and regexp. Through simple declarations, *pluck* allows complex procedures like [extracting text in nested HTML tags](https://github.com/schollz/pluck#use-config-file), or [extracting the content of an attribute of a HTML tag](https://github.com/schollz/pluck#basic-usage). *pluck* may not work in all scenarios, so do not consider it a replacement for xpath or regexp.
 
+### Doesn't regex already do this?
+
+Yes basically. TODO ADD REGEX
 
 Getting Started
 ===============
