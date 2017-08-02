@@ -19,7 +19,13 @@ In *pluck*, *X* and *Y* are called *activators* and *Z* is called the *deactivat
 
 ### Doesn't regex already do this?
 
-Yes basically. TODO ADD REGEX
+Yes basically. Here is an (simple) example:
+
+```
+(?:(?:X.*Y)|(?:Y.*X))(.*)(?:Z)
+```
+
+Basically, this should try and match everything before a `Z` and after we've seen both `X` and `Y`, in any order. This is not a complete example, but it shows the similarity.
 
 Getting Started
 ===============
