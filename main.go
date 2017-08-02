@@ -82,7 +82,7 @@ $ pluck -c config.toml -u http://www.foodnetwork.com/recipes/food-network-kitche
 	}
 
 	app.Action = func(c *cli.Context) (err error) {
-		if c.GlobalString("config") == "" && c.GlobalString("url") == "" {
+		if c.GlobalString("file") == "" && c.GlobalString("url") == "" {
 			fmt.Println("Must specify file or url")
 			return nil
 		}
