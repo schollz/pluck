@@ -71,6 +71,10 @@ $ pluck -c config.toml -u http://www.foodnetwork.com/recipes/food-network-kitche
 			Usage: "maximum number of items to capture",
 		},
 		cli.BoolFlag{
+			Name:  "sanitize,s",
+			Usage: "sanitize output (html tag stripping and hex conversion)",
+		},
+		cli.BoolFlag{
 			Name:  "verbose",
 			Usage: "turn on verbose mode",
 		},
@@ -102,6 +106,7 @@ $ pluck -c config.toml -u http://www.foodnetwork.com/recipes/food-network-kitche
 				Activators:  c.GlobalStringSlice("activator"),
 				Deactivator: c.GlobalString("deactivator"),
 				Limit:       c.GlobalInt("limit"),
+				Sanitize:    c.GlobalBool("sanitize"),
 			})
 		}
 

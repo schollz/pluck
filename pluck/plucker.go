@@ -4,6 +4,7 @@ import (
 	"bufio"
 	"bytes"
 	"encoding/json"
+	"html"
 	"io"
 	"io/ioutil"
 	"net/http"
@@ -13,6 +14,7 @@ import (
 
 	"github.com/BurntSushi/toml"
 	"github.com/pkg/errors"
+	"github.com/schollz/pluck/pluck/striphtml"
 	log "github.com/sirupsen/logrus"
 )
 
@@ -22,6 +24,7 @@ type Config struct {
 	Deactivator string   // stops capturing
 	Limit       int      // specifies the number of times capturing can occur
 	Name        string   // the key in the returned map, after completion
+	Sanitize    bool
 }
 
 type configs struct {
@@ -180,7 +183,14 @@ func (p *Plucker) Pluck(r *bufio.Reader) (err error) {
 						log.Info(string(p.pluckers[i].captureByte[:p.pluckers[i].captureI-len(p.pluckers[i].deactivator)]))
 						tempByte := make([]byte, p.pluckers[i].captureI-len(p.pluckers[i].deactivator))
 						copy(tempByte, p.pluckers[i].captureByte[:p.pluckers[i].captureI-len(p.pluckers[i].deactivator)])
-						p.pluckers[i].captured = append(p.pluckers[i].captured, bytes.TrimSpace(tempByte))
+						if p.pluckers[i].config.Sanitize {
+							tempByte = bytes.Replace(tempByte, []byte("\\u003c"), []byte("<"), -1)
+							tempByte = bytes.Replace(tempByte, []byte("\\u003e"), []byte(">"), -1)
+							tempByte = bytes.Replace(tempByte, []byte("\\u0026"), []byte("&"), -1)
+							tempByte = []byte(striphtml.StripTags(html.UnescapeString(string(tempByte))))
+						}
+						tempByte = bytes.TrimSpace(tempByte)
+						p.pluckers[i].captured = append(p.pluckers[i].captured, tempByte)
 						// reset
 						p.pluckers[i].numActivated = 0
 						p.pluckers[i].deactiveI = 0
