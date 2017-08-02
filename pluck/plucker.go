@@ -75,7 +75,7 @@ func (p *Plucker) Add(c Config) {
 	var u pluckUnit
 	u.config = c
 	if u.config.Limit == 0 {
-		u.config.Limit = 1
+		u.config.Limit = -1
 	}
 	if u.config.Name == "" {
 		u.config.Name = strconv.Itoa(len(p.pluckers))

@@ -4,6 +4,7 @@ import (
 	"fmt"
 	"io/ioutil"
 	"os"
+	"strings"
 	"time"
 
 	"github.com/schollz/pluck/pluck"
@@ -67,12 +68,16 @@ $ pluck -c config.toml -u http://www.foodnetwork.com/recipes/food-network-kitche
 		},
 		cli.IntFlag{
 			Name:  "limit,l",
-			Value: 1,
+			Value: -1,
 			Usage: "maximum number of items to capture",
 		},
 		cli.BoolFlag{
 			Name:  "sanitize,s",
 			Usage: "sanitize output (html tag stripping and hex conversion)",
+		},
+		cli.BoolFlag{
+			Name:  "text, t",
+			Usage: "output as plain text, not JSON",
 		},
 		cli.BoolFlag{
 			Name:  "verbose",
@@ -118,10 +123,27 @@ $ pluck -c config.toml -u http://www.foodnetwork.com/recipes/food-network-kitche
 		if err != nil {
 			return err
 		}
-		if c.GlobalString("output") != "" {
-			return ioutil.WriteFile(c.GlobalString("output"), []byte(p.ResultJSON()), 0644)
+		var result string
+		if c.GlobalBool("text") {
+			results, ok := p.Result()["0"].([]string)
+			if !ok {
+				results2, ok2 := p.Result()["0"].(string)
+				if !ok2 {
+					fmt.Println("Error?")
+					os.Exit(-1)
+				} else {
+					result = results2
+				}
+			} else {
+				result = strings.Join(results, "\n\n")
+			}
 		} else {
-			fmt.Println(p.ResultJSON())
+			result = p.ResultJSON()
+		}
+		if c.GlobalString("output") != "" {
+			return ioutil.WriteFile(c.GlobalString("output"), []byte(result), 0644)
+		} else {
+			fmt.Println(result)
 		}
 
 		return nil
