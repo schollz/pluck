@@ -19,7 +19,9 @@ In *pluck*, *X* and *Y* are called *activators* and *Z* is called the *deactivat
 
 ### Doesn't regex already do this?
 
-Yes basically. TODO ADD REGEX
+Yes basically. TODO ADD REGEX.
+
+The benefit with *pluck* is simplicity. You don't have to worry about escaping the right characters, nor do you need to know any regex syntax (which is not simple). Also *pluck* is hard-coded for matching this specific kind of pattern simultaneously, so there is no cost for generating a new deterministic finite automaton from multiple regex.
 
 Getting Started
 ===============
