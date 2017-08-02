@@ -139,12 +139,19 @@ $ go test -cover
 
 The [state of the art for xpath is `lxml`, based on libxml2](http://lxml.de/performance.html). Here is a comparison for plucking the same data from the same file, run on Windows i7-3770 CPU @ 3.40GHz.
 
-| Language  | Time (ms) |
+| Language  | Rate |
 | ------------- | ------------- |
-| `lxml` (Python3.6)  | 3.8  |
-| pluck | 0.8  |
+| `lxml` (Python3.6)  | 260/s  |
+| pluck | 1250/s |
 
-*pluck* has the added benefit in that, unlike `lxml`, adding more things to extract does not slow it down. Everything in *pluck* is searched simultaneously as the file is streamed.
+A real-world example I use *pluck* for is processing 1,200 HTML files in parallel, compared to running `lxml` in parallel:
+
+| Language  | Rate |
+| ------------- | ------------- |
+| `lxml` (Python3.6)  | 25/s  |
+| pluck | 300/s |
+
+I'd like to benchmark a Perl regex, although I don't know how to write this kind of regex! Send a PR if you do :)
 
 ## To Do
 
