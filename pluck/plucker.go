@@ -2,6 +2,7 @@ package pluck
 
 import (
 	"bufio"
+	"bytes"
 	"encoding/json"
 	"io"
 	"io/ioutil"
@@ -27,7 +28,8 @@ type configs struct {
 	Pluck []Config
 }
 
-type plucker struct {
+// Plucker stores the result and the types of things to pluck
+type Plucker struct {
 	pluckers []pluckUnit
 	result   map[string]interface{}
 }
@@ -48,15 +50,15 @@ type pluckUnit struct {
 // which can later have items added to it
 // or can load a config file
 // and then can be used to parse.
-func New() (*plucker, error) {
+func New() (*Plucker, error) {
 	log.SetLevel(log.WarnLevel)
-	p := new(plucker)
+	p := new(Plucker)
 	p.pluckers = []pluckUnit{}
 	return p, nil
 }
 
 // Verbose toggles debug mode
-func (p *plucker) Verbose(makeVerbose bool) {
+func (p *Plucker) Verbose(makeVerbose bool) {
 	if makeVerbose {
 		log.SetLevel(log.DebugLevel)
 	} else {
@@ -66,7 +68,7 @@ func (p *plucker) Verbose(makeVerbose bool) {
 
 // Add adds a unit
 // to pluck with specified parameters
-func (p *plucker) Add(c Config) {
+func (p *Plucker) Add(c Config) {
 	var u pluckUnit
 	u.config = c
 	if u.config.Limit == 0 {
@@ -87,7 +89,7 @@ func (p *plucker) Add(c Config) {
 
 // Load will load a YAML configuration file of untis
 // to pluck with specified parameters
-func (p *plucker) Load(f string) (err error) {
+func (p *Plucker) Load(f string) (err error) {
 	var conf configs
 	tomlData, err := ioutil.ReadFile(f)
 	if err != nil {
@@ -110,7 +112,7 @@ func (p *plucker) Load(f string) (err error) {
 // PluckString takes a string as input
 // and uses the specified parameters and generates
 // a map (p.result) with the finished results
-func (p *plucker) PluckString(s string) (err error) {
+func (p *Plucker) PluckString(s string) (err error) {
 	r := bufio.NewReader(strings.NewReader(s))
 	return p.Pluck(r)
 }
@@ -118,7 +120,7 @@ func (p *plucker) PluckString(s string) (err error) {
 // PluckFile takes a file as input
 // and uses the specified parameters and generates
 // a map (p.result) with the finished results
-func (p *plucker) PluckFile(f string) (err error) {
+func (p *Plucker) PluckFile(f string) (err error) {
 	r1, err := os.Open(f)
 	defer r1.Close()
 	if err != nil {
@@ -128,10 +130,10 @@ func (p *plucker) PluckFile(f string) (err error) {
 	return p.Pluck(r)
 }
 
-// PluckWeb takes a URL as input
+// PluckURL takes a URL as input
 // and uses the specified parameters and generates
 // a map (p.result) with the finished results
-func (p *plucker) PluckURL(url string) (err error) {
+func (p *Plucker) PluckURL(url string) (err error) {
 	resp, err := http.Get(url)
 	if err != nil {
 		return
@@ -143,7 +145,7 @@ func (p *plucker) PluckURL(url string) (err error) {
 
 // Pluck takes a buffered reader stream and
 // extracts the text from it
-func (p *plucker) Pluck(r *bufio.Reader) (err error) {
+func (p *Plucker) Pluck(r *bufio.Reader) (err error) {
 	for {
 		curByte, errRead := r.ReadByte()
 		allLimitsReached := true
@@ -178,7 +180,7 @@ func (p *plucker) Pluck(r *bufio.Reader) (err error) {
 						log.Info(string(p.pluckers[i].captureByte[:p.pluckers[i].captureI-len(p.pluckers[i].deactivator)]))
 						tempByte := make([]byte, p.pluckers[i].captureI-len(p.pluckers[i].deactivator))
 						copy(tempByte, p.pluckers[i].captureByte[:p.pluckers[i].captureI-len(p.pluckers[i].deactivator)])
-						p.pluckers[i].captured = append(p.pluckers[i].captured, tempByte)
+						p.pluckers[i].captured = append(p.pluckers[i].captured, bytes.TrimSpace(tempByte))
 						// reset
 						p.pluckers[i].numActivated = 0
 						p.pluckers[i].deactiveI = 0
@@ -215,16 +217,16 @@ func (p *plucker) Pluck(r *bufio.Reader) (err error) {
 	return
 }
 
-// Returns the result, formatted as JSON
-func (p *plucker) ResultJSON() string {
-	resultJson, err := json.MarshalIndent(p.result, "", "    ")
+// ResultJSON resturns the result, formatted as JSON
+func (p *Plucker) ResultJSON() string {
+	resultJSON, err := json.MarshalIndent(p.result, "", "    ")
 	if err != nil {
 		log.Error(errors.Wrap(err, "result marshalling failed"))
 	}
-	return string(resultJson)
+	return string(resultJSON)
 }
 
-// Returns the result
-func (p *plucker) Result() map[string]interface{} {
+// Result returns the raw result
+func (p *Plucker) Result() map[string]interface{} {
 	return p.result
 }
