@@ -143,6 +143,7 @@ License
 
 MIT
 
+Acknowledgements
+=================
 
-
-
+<a target="_blank" href="https://www.vecteezy.com">Graphics by: www.vecteezy.com</a>
