@@ -27,6 +27,10 @@ Yes basically. Here is an (simple) example:
 
 Basically, this should try and match everything before a `Z` and after we've seen both `X` and `Y`, in any order. This is not a complete example, but it shows the similarity.
 
+
+The benefit with *pluck* is simplicity. You don't have to worry about escaping the right characters, nor do you need to know any regex syntax (which is not simple). Also *pluck* is hard-coded for matching this specific kind of pattern simultaneously, so there is no cost for generating a new deterministic finite automaton from multiple regex.
+
+
 Getting Started
 ===============
 

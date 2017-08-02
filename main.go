@@ -2,6 +2,7 @@ package main
 
 import (
 	"fmt"
+	"io/ioutil"
 	"os"
 	"time"
 
@@ -73,6 +74,11 @@ $ pluck -c config.toml -u http://www.foodnetwork.com/recipes/food-network-kitche
 			Name:  "verbose",
 			Usage: "turn on verbose mode",
 		},
+		cli.StringFlag{
+			Name:  "output,o",
+			Value: "",
+			Usage: "direct output to file",
+		},
 	}
 
 	app.Action = func(c *cli.Context) (err error) {
@@ -107,7 +113,11 @@ $ pluck -c config.toml -u http://www.foodnetwork.com/recipes/food-network-kitche
 		if err != nil {
 			return err
 		}
-		fmt.Println(p.ResultJSON())
+		if c.GlobalString("output") != "" {
+			return ioutil.WriteFile(c.GlobalString("output"), []byte(p.ResultJSON()), 0644)
+		} else {
+			fmt.Println(p.ResultJSON())
+		}
 
 		return nil
 	}
