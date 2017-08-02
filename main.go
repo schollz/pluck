@@ -39,7 +39,10 @@ activators = ["<label","Ingredient",">"]
 deactivator = "<"
 limit = -1
 name = "ingredients"
-$ pluck -c config.toml -u http://www.foodnetwork.com/recipes/food-network-kitchen/15-minute-shrimp-tacos-with-spicy-chipotle-slaw-3676441
+$ pluck -c config.toml -u https://goo.gl/DHmqmv
+
+4) Get headlines from news.google.com 
+$ pluck -a 'role="heading"' -a '>' -d '<' -t -s -u 'https://news.google.com/news/?ned=us&hl=en'
 		`
 	app.Flags = []cli.Flag{
 		cli.StringFlag{
