@@ -19,7 +19,7 @@ In *pluck*, *X* and *Y* are called *activators* and *Z* is called the *deactivat
 
 ### Doesn't regex already do this?
 
-Yes basically. Here is an (simple) example:
+Yes basically. Here is [an (simple) example](https://regex101.com/r/xt7fVr/1):
 
 ```
 (?:(?:X.*Y)|(?:Y.*X))(.*)(?:Z)
