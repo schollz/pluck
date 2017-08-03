@@ -95,7 +95,7 @@ $ pluck -a 'role="heading"' -a '>' -d '<' -t -s -u 'https://news.google.com/news
 
 	app.Action = func(c *cli.Context) (err error) {
 		if c.GlobalString("file") == "" && c.GlobalString("url") == "" {
-			fmt.Println("Must specify file or url")
+			fmt.Println("Must specify file or url. For example -u https://nytimes.com.\nSee help and usage with -h")
 			return nil
 		}
 		p, _ := pluck.New()
@@ -103,11 +103,11 @@ $ pluck -a 'role="heading"' -a '>' -d '<' -t -s -u 'https://news.google.com/news
 			p.Load(c.GlobalString("config"))
 		} else {
 			if len(c.GlobalStringSlice("activator")) == 0 {
-				fmt.Println("Must specify at least one activator")
+				fmt.Println("Must specify at least one activator. For example -a 'start'.\nSee help and usage with -h")
 				return nil
 			}
 			if len(c.GlobalString("deactivator")) == 0 {
-				fmt.Println("Must specify at deactivator")
+				fmt.Println("Must specify at deactivator. For example -d 'end'.\nSee help and usage with -h")
 				return nil
 			}
 			p.Add(pluck.Config{
