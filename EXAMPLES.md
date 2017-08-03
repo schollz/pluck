@@ -1,5 +1,17 @@
 # Examples
 
+## Get URL of original flickr image
+
+```
+$ pluck -a '"o":' -a 'display' -a ':"' -d '"' -u 'https://www.flickr.com/photos/mecedmonton/35612947565/in/album-72157683306176111/' -t
+```
+
+## Get URL of a 500px image
+
+```
+$ pluck -a 'twitter:title' -a "content='" -d "'" -u 'https://500px.com/photo/222234363/over-the-hills-by-bruno-pisani?ctx_page=1&from=editors' -s -t
+```
+
 ## Read comments from Hacker News page
 
 ```
