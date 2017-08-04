@@ -1,5 +1,11 @@
 # Examples
 
+## Get latest tweets
+
+```
+$ pluck  -a 'data-aria-label-part="0"' -a '>' -d '</p>' -l -1 -u https://twitter.com/search\?f\=tweets\&vertical\=default\&q\=from%3ArealDonaldTrump\&src\=typd -s
+```
+
 ## Get URL of original flickr image
 
 ```

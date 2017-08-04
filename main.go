@@ -99,6 +99,9 @@ $ pluck -a 'role="heading"' -a '>' -d '<' -t -s -u 'https://news.google.com/news
 			return nil
 		}
 		p, _ := pluck.New()
+		if c.GlobalBool("verbose") {
+			p.Verbose(true)
+		}
 		if len(c.GlobalString("config")) > 0 {
 			p.Load(c.GlobalString("config"))
 		} else {

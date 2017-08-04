@@ -198,6 +198,7 @@ func (p *Plucker) Pluck(r *bufio.Reader) (err error) {
 					}
 				} else {
 					p.pluckers[i].activeI = 0
+					p.pluckers[i].deactiveI = 0
 				}
 			}
 
