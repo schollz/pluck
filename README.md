@@ -4,7 +4,7 @@
     width="260" height="80" border="0" alt="pluck">
 <br>
 <a href="https://github.com/schollz/pluck/releases/latest"><img src="https://img.shields.io/badge/version-0.1.0-brightgreen.svg?style=flat-square" alt="Version"></a>
-<img src="https://img.shields.io/badge/coverage-95%25-green.svg?style=flat-square" alt="Code Coverage">
+<img src="https://img.shields.io/badge/coverage-91%25-green.svg?style=flat-square" alt="Code Coverage">
 </p>
 
 <p align="center">Pluck text in a fast and intuitive way. :rooster:</p>
@@ -33,7 +33,7 @@ The benefit with *pluck* is simplicity. You don't have to worry about escaping t
 
 ### Doesn't cascadia already do this?
 
-Yes, there is already [a command-line tool](https://github.com/suntong/cascadia) to extract structed information from XML/HTML. There are many benefeits to *cascadia*, namely you can do block selection. If you don't have structured data, *pluck* is advantageous (it extracts from any file). Also, with *pluck* you don't need to learn CSS selection.
+Yes, there is already [a command-line tool](https://github.com/suntong/cascadia) to extract structured information from XML/HTML. There are many benefits to *cascadia*, namely you can do block selection. If you don't have structured data, *pluck* is advantageous (it extracts from any file). Also, with *pluck* you don't need to learn CSS selection.
 
 
 # Getting Started

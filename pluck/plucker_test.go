@@ -27,7 +27,7 @@ func TestPluck(t *testing.T) {
 	}
 	assert.Equal(t, 3, len(p.pluckers))
 	assert.Equal(t, "0", p.pluckers[0].config.Name)
-	assert.Equal(t, 1, p.pluckers[0].config.Limit)
+	assert.Equal(t, -1, p.pluckers[0].config.Limit)
 	assert.Equal(t, "options", p.pluckers[1].config.Name)
 	assert.Equal(t, "songs", p.pluckers[2].config.Name)
 
