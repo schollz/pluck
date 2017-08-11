@@ -11,11 +11,12 @@
 
 *pluck* makes text extraction intuitive and [fast](https://github.com/schollz/pluck#current-benchmark). You can specify an extraction in nearly the same way you'd tell a person trying to extract the text by hand: "OK Bob, every time you find *X* and then *Y*, copy down everything you see until you encounter *Z*." 
 
-In *pluck*, *X* and *Y* are called *activators* and *Z* is called the *deactivator*. The file/URL being plucked is streamed byte-by-byte into a finite state machine. Once all *activators* are found, the following bytes are saved to a buffer, which is added to a list of results once the *deactivator* is found. The file is read only once, and multiple queries are extracted simultaneously.
+In *pluck*, *X* and *Y* are called *activators* and *Z* is called the *deactivator*. The file/URL being plucked is streamed byte-by-byte into a finite state machine. Once all *activators* are found, the following bytes are saved to a buffer, which is added to a list of results once the *deactivator* is found. The file is read only once, and multiple queries are extracted simultaneously. There is no requirement on the file format (e.g. XML/HTML), as long as its text.
 
-### Why? 
 
-*pluck* was made as a simpler and faster alternative to xpath and regexp. Through simple declarations, *pluck* allows complex procedures like [extracting text in nested HTML tags](https://github.com/schollz/pluck#use-config-file), or [extracting the content of an attribute of a HTML tag](https://github.com/schollz/pluck#basic-usage). *pluck* may not work in all scenarios, so do not consider it a replacement for xpath or regexp.
+# Why?
+
+*pluck* was made as a simple alternative to xpath and regexp. Through simple declarations, *pluck* allows complex procedures like [extracting text in nested HTML tags](https://github.com/schollz/pluck#use-config-file), or [extracting the content of an attribute of a HTML tag](https://github.com/schollz/pluck#basic-usage). *pluck* may not work in all scenarios, so do not consider it a replacement for xpath or regexp.
 
 ### Doesn't regex already do this?
 
@@ -30,9 +31,12 @@ Basically, this should try and match everything before a `Z` and after we've see
 
 The benefit with *pluck* is simplicity. You don't have to worry about escaping the right characters, nor do you need to know any regex syntax (which is not simple). Also *pluck* is hard-coded for matching this specific kind of pattern simultaneously, so there is no cost for generating a new deterministic finite automaton from multiple regex.
 
+### Doesn't cascadia already do this?
 
-Getting Started
-===============
+Yes, there is already [a command-line tool](https://github.com/suntong/cascadia) to extract structed information from XML/HTML. There are many benefeits to *cascadia*, namely you can do block selection. If you don't have structured data, *pluck* is advantageous (it extracts from any file). Also, with *pluck* you don't need to learn CSS selection.
+
+
+# Getting Started
 
 ## Install
 
@@ -122,12 +126,17 @@ $ pluck -c config.toml -u https://goo.gl/DHmqmv
 }
 ```
 
+### More examples
+
+See [EXAMPLES.md](https://github.com/schollz/pluck/blob/master/EXAMPLES.md) for more examples.
+
 ### Use as a Go package
 
 Import pluck as `"github.com/schollz/pluck/pluck"` and you can use it in your own project. See the tests for more info.
 
-Development
-===========
+
+
+# Development
 
 ```
 $ go get -u github.com/schollz/pluck/...
@@ -160,12 +169,10 @@ I'd like to benchmark a Perl regex, although I don't know how to write this kind
 - [ ] Allow piping from standard in?
 - [x] API to handle strings, e.g. `PluckString(s string)`
 
-License
-========
+# License
 
 MIT
 
-Acknowledgements
-=================
+# Acknowledgements
 
 <a target="_blank" href="https://www.vecteezy.com">Graphics by: www.vecteezy.com</a>
