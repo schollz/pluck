@@ -12,7 +12,9 @@
 
 *pluck* makes text extraction intuitive and [fast](https://github.com/schollz/pluck#current-benchmark). You can specify an extraction in nearly the same way you'd tell a person trying to extract the text by hand: "OK Bob, every time you find *X* and then *Y*, copy down everything you see until you encounter *Z*." 
 
-In *pluck*, *X* and *Y* are called *activators* and *Z* is called the *deactivator*. The file/URL being plucked is streamed byte-by-byte into a finite state machine. Once all *activators* are found, the following bytes are saved to a buffer, which is added to a list of results once the *deactivator* is found. The file is read only once, and multiple queries are extracted simultaneously. There is no requirement on the file format (e.g. XML/HTML), as long as its text.
+In *pluck*, *X* and *Y* are called *activators* and *Z* is called the *deactivator*. The file/URL being plucked is streamed byte-by-byte into a finite state machine. Once all *activators* are found, the following bytes are saved to a buffer, which is added to a list of results once the *deactivator* is found. 
+
+*The file is read only once, and multiple queries are extracted simultaneously.* Alos, there is no requirement on the file format (e.g. XML/HTML), as long as its text.
 
 
 # Why?
