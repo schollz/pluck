@@ -3,7 +3,8 @@
 ## Get latest tweets
 
 ```
-$ pluck  -a 'data-aria-label-part="0"' -a '>' -d '</p>' -l -1 -u https://twitter.com/search\?f\=tweets\&vertical\=default\&q\=from%3ArealDonaldTrump\&src\=typd -s
+$ wget https://twitter.com/search\?f\=tweets\&vertical\=default\&q\=from%3ArealDonaldTrump\&src\=typd -O twitter.html
+$ pluck  -a '<p ' -a 'data-aria-label-part=' -a '>' -d '</p>' -l -1 -s -f twitter.html
 ```
 
 ## Read comments from Hacker News page
