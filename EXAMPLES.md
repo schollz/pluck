@@ -1,6 +1,12 @@
 # Examples
 
-## Get latest tweets
+## Get headlines from news.google.com
+
+```
+$ pluck -a 'role="heading"' -a '>' -d '<' -t -s -u 'https://news.google.com/news/?ned=us&hl=en'
+```
+
+## Get latest tweets from Donald Trump
 
 ```
 $ wget https://twitter.com/search\?f\=tweets\&vertical\=default\&q\=from%3ArealDonaldTrump\&src\=typd -O twitter.html
