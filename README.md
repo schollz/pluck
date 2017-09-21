@@ -86,9 +86,7 @@ $ pluck -a '<' -a 'href' -a '"' -d '"' -l 10 -u https://nytimes.com
 
 ### Use Config file
 
-You can also specify multiple things to pluck, simultaneously, by listing the *activators* and the *deactivator* in a TOML file. The file is only read *once*, for any number of things to specified to pluck.
-
-For example, lets say we want to parse ingredients and the title of [a recipe](https://goo.gl/DHmqmv). Make a file `config.toml`:
+You can also specify multiple things to pluck, simultaneously, by listing the *activators* and the *deactivator* in a TOML file. For example, lets say we want to parse ingredients and the title of [a recipe](https://goo.gl/DHmqmv). Make a file `config.toml`:
 
 ```toml
 [[pluck]]
@@ -125,6 +123,7 @@ $ pluck -c config.toml -u https://goo.gl/DHmqmv
     "title": "15-Minute Shrimp Tacos with Spicy Chipotle Slaw Recipe | Food Network Kitchen | Food Network"
 }
 ```
+
 
 ### More examples
 
