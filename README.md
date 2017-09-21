@@ -5,6 +5,7 @@
 <br>
 <a href="https://github.com/schollz/pluck/releases/latest"><img src="https://img.shields.io/badge/version-0.1.0-brightgreen.svg?style=flat-square" alt="Version"></a>
 <img src="https://img.shields.io/badge/coverage-91%25-green.svg?style=flat-square" alt="Code Coverage">
+<a href="https://godoc.org/github.com/schollz/pluck/pluck"><img src="https://img.shields.io/badge/godoc-reference-blue.svg?style=flat-square" alt="Code Coverage"></a>
 </p>
 
 <p align="center">Pluck text in a fast and intuitive way. :rooster:</p>
