@@ -1,21 +1,16 @@
 # Examples
 
-## Get latest tweets
+## Get headlines from news.google.com
 
 ```
-$ pluck  -a 'data-aria-label-part="0"' -a '>' -d '</p>' -l -1 -u https://twitter.com/search\?f\=tweets\&vertical\=default\&q\=from%3ArealDonaldTrump\&src\=typd -s
+$ pluck -a 'role="heading"' -a '>' -d '<' -t -s -u 'https://news.google.com/news/?ned=us&hl=en'
 ```
 
-## Get URL of original flickr image
+## Get latest tweets from Donald Trump
 
 ```
-$ pluck -a '"o":' -a 'display' -a ':"' -d '"' -u 'https://www.flickr.com/photos/mecedmonton/35612947565/in/album-72157683306176111/' -t
-```
-
-## Get URL of a 500px image
-
-```
-$ pluck -a 'twitter:title' -a "content='" -d "'" -u 'https://500px.com/photo/222234363/over-the-hills-by-bruno-pisani?ctx_page=1&from=editors' -s -t
+$ wget https://twitter.com/search\?f\=tweets\&vertical\=default\&q\=from%3ArealDonaldTrump\&src\=typd -O twitter.html
+$ pluck  -a '<p ' -a 'data-aria-label-part=' -a '>' -d '</p>' -l -1 -s -f twitter.html
 ```
 
 ## Read comments from Hacker News page

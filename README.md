@@ -5,13 +5,16 @@
 <br>
 <a href="https://github.com/schollz/pluck/releases/latest"><img src="https://img.shields.io/badge/version-0.1.0-brightgreen.svg?style=flat-square" alt="Version"></a>
 <img src="https://img.shields.io/badge/coverage-91%25-green.svg?style=flat-square" alt="Code Coverage">
+<a href="https://godoc.org/github.com/schollz/pluck/pluck"><img src="https://img.shields.io/badge/godoc-reference-blue.svg?style=flat-square" alt="Code Coverage"></a>
 </p>
 
 <p align="center">Pluck text in a fast and intuitive way. :rooster:</p>
 
 *pluck* makes text extraction intuitive and [fast](https://github.com/schollz/pluck#current-benchmark). You can specify an extraction in nearly the same way you'd tell a person trying to extract the text by hand: "OK Bob, every time you find *X* and then *Y*, copy down everything you see until you encounter *Z*." 
 
-In *pluck*, *X* and *Y* are called *activators* and *Z* is called the *deactivator*. The file/URL being plucked is streamed byte-by-byte into a finite state machine. Once all *activators* are found, the following bytes are saved to a buffer, which is added to a list of results once the *deactivator* is found. The file is read only once, and multiple queries are extracted simultaneously. There is no requirement on the file format (e.g. XML/HTML), as long as its text.
+In *pluck*, *X* and *Y* are called *activators* and *Z* is called the *deactivator*. The file/URL being plucked is streamed byte-by-byte into a finite state machine. Once all *activators* are found, the following bytes are saved to a buffer, which is added to a list of results once the *deactivator* is found. 
+
+*The file is read only once, and multiple queries are extracted simultaneously.* Alos, there is no requirement on the file format (e.g. XML/HTML), as long as its text.
 
 
 # Why?
@@ -86,9 +89,7 @@ $ pluck -a '<' -a 'href' -a '"' -d '"' -l 10 -u https://nytimes.com
 
 ### Use Config file
 
-You can also specify multiple things to pluck, simultaneously, by listing the *activators* and the *deactivator* in a TOML file. The file is only read *once*, for any number of things to specified to pluck.
-
-For example, lets say we want to parse ingredients and the title of [a recipe](https://goo.gl/DHmqmv). Make a file `config.toml`:
+You can also specify multiple things to pluck, simultaneously, by listing the *activators* and the *deactivator* in a TOML file. For example, lets say we want to parse ingredients and the title of [a recipe](https://goo.gl/DHmqmv). Make a file `config.toml`:
 
 ```toml
 [[pluck]]
@@ -125,6 +126,7 @@ $ pluck -c config.toml -u https://goo.gl/DHmqmv
     "title": "15-Minute Shrimp Tacos with Spicy Chipotle Slaw Recipe | Food Network Kitchen | Food Network"
 }
 ```
+
 
 ### More examples
 
