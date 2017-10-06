@@ -21,7 +21,8 @@ import (
 // Config specifies parameters for plucking
 type Config struct {
 	Activators  []string // must be found in order, before capturing commences
-	Deactivator string   // stops capturing
+	Deactivator string   // restarts capturing
+	Finisher    string   // finishes capturing this pluck
 	Limit       int      // specifies the number of times capturing can occur
 	Name        string   // the key in the returned map, after completion
 	Sanitize    bool
@@ -41,12 +42,15 @@ type pluckUnit struct {
 	config       Config
 	activators   [][]byte
 	deactivator  []byte
+	finisher     []byte
 	captured     [][]byte
 	numActivated int
 	captureByte  []byte
 	captureI     int
 	activeI      int
 	deactiveI    int
+	finisherI    int
+	isFinished   bool
 }
 
 // New returns a new plucker
@@ -85,6 +89,11 @@ func (p *Plucker) Add(c Config) {
 		u.activators[i] = []byte(c.Activators[i])
 	}
 	u.deactivator = []byte(c.Deactivator)
+	if len(c.Finisher) > 0 {
+		u.finisher = []byte(c.Finisher)
+	} else {
+		u.finisher = []byte("alskdjlaskdjcmaw93naw934e8nfjaosjfnoa3w89n")
+	}
 	u.captureByte = make([]byte, 10000)
 	u.captured = [][]byte{}
 	p.pluckers = append(p.pluckers, u)
@@ -105,6 +114,7 @@ func (p *Plucker) Load(f string) (err error) {
 		var c Config
 		c.Activators = conf.Pluck[i].Activators
 		c.Deactivator = conf.Pluck[i].Deactivator
+		c.Finisher = conf.Pluck[i].Finisher
 		c.Limit = conf.Pluck[i].Limit
 		c.Name = conf.Pluck[i].Name
 		p.Add(c)
@@ -137,7 +147,13 @@ func (p *Plucker) PluckFile(f string) (err error) {
 // and uses the specified parameters and generates
 // a map (p.result) with the finished results
 func (p *Plucker) PluckURL(url string) (err error) {
-	resp, err := http.Get(url)
+	client := &http.Client{}
+	request, err := http.NewRequest("GET", url, nil)
+	if err != nil {
+		return
+	}
+	request.Header.Set("User-Agent", "Mozilla/5.0 (X11; Linux x86_64; rv:52.0) Gecko/20100101 Firefox/52.0")
+	resp, err := client.Do(request)
 	if err != nil {
 		return
 	}
@@ -153,11 +169,24 @@ func (p *Plucker) Pluck(r *bufio.Reader) (err error) {
 		curByte, errRead := r.ReadByte()
 		allLimitsReached := true
 		for i := range p.pluckers {
-			if len(p.pluckers[i].captured) == p.pluckers[i].config.Limit {
+			if len(p.pluckers[i].captured) == p.pluckers[i].config.Limit || p.pluckers[i].isFinished {
 				continue
 			} else {
 				allLimitsReached = false
 			}
+
+			// look for finisher
+			if curByte == p.pluckers[i].finisher[p.pluckers[i].finisherI] {
+				p.pluckers[i].finisherI++
+				if p.pluckers[i].finisherI == len(p.pluckers[i].finisher) {
+					log.Info(string(curByte), "Finished")
+					p.pluckers[i].isFinished = true
+					continue
+				}
+			} else {
+				p.pluckers[i].finisherI = 0
+			}
+
 			if p.pluckers[i].numActivated < len(p.pluckers[i].activators) {
 				// look for activators
 				if curByte == p.pluckers[i].activators[p.pluckers[i].numActivated][p.pluckers[i].activeI] {

@@ -15,7 +15,7 @@ func BenchmarkParseFile(b *testing.B) {
 	}
 }
 
-func TestPluck(t *testing.T) {
+func TestPluck1(t *testing.T) {
 	p, err := New()
 	p.Verbose(false)
 	if err != nil {
@@ -64,4 +64,33 @@ func TestPluck(t *testing.T) {
 	})
 	p.PluckString("XaZbYcZd")
 	assert.Equal(t, `c`, p.Result()["0"])
+}
+
+func TestPluck2(t *testing.T) {
+	p, err := New()
+	p.Verbose(false)
+	if err != nil {
+		t.Error(err)
+	}
+	err = p.Load("test/config2.toml")
+	if err != nil {
+		t.Error(err)
+	}
+
+	p.PluckFile("test/test.txt")
+	assert.Equal(t, `{
+    "0": "Category Archives: Song of the Day Podcast",
+    "options": [
+        "2009 Countdown",
+        "2010 Countdown",
+        "2011 Countdown"
+    ],
+    "songs": [
+        "Juana Molina \u0026#8211; Cosoco",
+        "Charms – Siren",
+        "Daddy Issues \u0026#8211; Locked Out",
+        "Cloud Control \u0026#8211; Rainbow City",
+        "Kevin Morby \u0026#8211; Come to Me Now"
+    ]
+}`, p.ResultJSON())
 }
