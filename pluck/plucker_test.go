@@ -94,3 +94,25 @@ func TestPluck2(t *testing.T) {
     ]
 }`, p.ResultJSON())
 }
+
+func TestPluckSongs(t *testing.T) {
+	p, err := New()
+	p.Verbose(false)
+	if err != nil {
+		t.Error(err)
+	}
+	err = p.Load("test/song.toml")
+	if err != nil {
+		t.Error(err)
+	}
+
+	p.PluckFile("test/song.html")
+	assert.Equal(t, `{
+    "songs": [
+        "/music/The+War+on+Drugs/_/An+Ocean+in+Between+the+Waves",
+        "/music/The+War+on+Drugs/_/Suffering",
+        "/music/Spoon/_/Inside+Out",
+        "/music/Real+Estate/_/Crime"
+    ]
+}`, p.ResultJSON())
+}
