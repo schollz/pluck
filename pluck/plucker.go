@@ -21,6 +21,7 @@ import (
 // Config specifies parameters for plucking
 type Config struct {
 	Activators  []string // must be found in order, before capturing commences
+	Permanent   int      // number of activators that stay permanently (counted from left to right)
 	Deactivator string   // restarts capturing
 	Finisher    string   // finishes capturing this pluck
 	Limit       int      // specifies the number of times capturing can occur
@@ -41,6 +42,7 @@ type Plucker struct {
 type pluckUnit struct {
 	config       Config
 	activators   [][]byte
+	permanent    int
 	deactivator  []byte
 	finisher     []byte
 	captured     [][]byte
@@ -88,6 +90,7 @@ func (p *Plucker) Add(c Config) {
 	for i := range c.Activators {
 		u.activators[i] = []byte(c.Activators[i])
 	}
+	u.permanent = c.Permanent
 	u.deactivator = []byte(c.Deactivator)
 	if len(c.Finisher) > 0 {
 		u.finisher = []byte(c.Finisher)
@@ -117,6 +120,7 @@ func (p *Plucker) Load(f string) (err error) {
 		c.Finisher = conf.Pluck[i].Finisher
 		c.Limit = conf.Pluck[i].Limit
 		c.Name = conf.Pluck[i].Name
+		c.Permanent = conf.Pluck[i].Permanent
 		p.Add(c)
 	}
 	return
@@ -221,7 +225,7 @@ func (p *Plucker) Pluck(r *bufio.Reader) (err error) {
 						tempByte = bytes.TrimSpace(tempByte)
 						p.pluckers[i].captured = append(p.pluckers[i].captured, tempByte)
 						// reset
-						p.pluckers[i].numActivated = 0
+						p.pluckers[i].numActivated = p.pluckers[i].permanent
 						p.pluckers[i].deactiveI = 0
 						p.pluckers[i].captureI = 0
 					}
@@ -236,8 +240,6 @@ func (p *Plucker) Pluck(r *bufio.Reader) (err error) {
 		if errRead == io.EOF || allLimitsReached {
 			break
 		}
-
-		// TODO: Also break if everything has reached its limit
 	}
 
 	// Generate result

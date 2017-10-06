@@ -9,7 +9,8 @@ limit = 3
 name = "options"
 
 [[pluck]]
-activators = [">Song of the Day: "]
+activators = ["<span>Song of the Day",">Song of the Day: "]
+permanent = 1
 deactivator = "<"
 name = "songs"
 limit = -1
