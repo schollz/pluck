@@ -178,91 +178,101 @@ func (p *Plucker) PluckURL(url string) (err error) {
 }
 
 // pluckByte is the finite state machine processing of the plucker
-func (p *Plucker) pluckByte(curByte byte) (allLimitsReached bool, err error) {
-	allLimitsReached = true
-	for i := range p.pluckers {
-		if len(p.pluckers[i].captured) == p.pluckers[i].config.Limit || p.pluckers[i].isFinished {
-			continue
-		} else {
-			allLimitsReached = false
-		}
-
-		if p.pluckers[i].numActivated < len(p.pluckers[i].activators) {
-			// look for activators
-			if curByte == p.pluckers[i].activators[p.pluckers[i].numActivated][p.pluckers[i].activeI] {
-				p.pluckers[i].activeI++
-				if p.pluckers[i].activeI == len(p.pluckers[i].activators[p.pluckers[i].numActivated]) {
-					log.Info(string(curByte), "Activated")
-					p.pluckers[i].numActivated++
-					p.pluckers[i].activeI = 0
-				}
-			} else {
-				p.pluckers[i].activeI = 0
-			}
-		} else {
-			// add to capture
-			p.pluckers[i].captureByte[p.pluckers[i].captureI] = curByte
-			p.pluckers[i].captureI++
-			// look for deactivators
-			if curByte == p.pluckers[i].deactivator[p.pluckers[i].deactiveI] {
-				p.pluckers[i].deactiveI++
-				if p.pluckers[i].deactiveI == len(p.pluckers[i].deactivator) {
-					log.Info(string(curByte), "Deactivated")
-					// add capture
-					log.Info(string(p.pluckers[i].captureByte[:p.pluckers[i].captureI-len(p.pluckers[i].deactivator)]))
-					tempByte := make([]byte, p.pluckers[i].captureI-len(p.pluckers[i].deactivator))
-					copy(tempByte, p.pluckers[i].captureByte[:p.pluckers[i].captureI-len(p.pluckers[i].deactivator)])
-					if p.pluckers[i].config.Sanitize {
-						tempByte = bytes.Replace(tempByte, []byte("\\u003c"), []byte("<"), -1)
-						tempByte = bytes.Replace(tempByte, []byte("\\u003e"), []byte(">"), -1)
-						tempByte = bytes.Replace(tempByte, []byte("\\u0026"), []byte("&"), -1)
-						tempByte = []byte(striphtml.StripTags(html.UnescapeString(string(tempByte))))
-					}
-					tempByte = bytes.TrimSpace(tempByte)
-					p.pluckers[i].captured = append(p.pluckers[i].captured, tempByte)
-					// reset
-					p.pluckers[i].numActivated = p.pluckers[i].permanent
-					p.pluckers[i].deactiveI = 0
-					p.pluckers[i].captureI = 0
-				}
-			} else {
-				p.pluckers[i].activeI = 0
-				p.pluckers[i].deactiveI = 0
-			}
-		}
-
-		// look for finisher
-		if p.pluckers[i].finisher != nil {
-			if curByte == p.pluckers[i].finisher[p.pluckers[i].finisherI] {
-				p.pluckers[i].finisherI++
-				if p.pluckers[i].finisherI == len(p.pluckers[i].finisher) {
-					log.Info(string(curByte), "Finished")
-					p.pluckers[i].isFinished = true
-					continue
-				}
-			} else {
-				p.pluckers[i].finisherI = 0
-			}
-		}
-
+func (p *Plucker) pluckByte(curByte byte, i int) (err error) {
+	if len(p.pluckers[i].captured) == p.pluckers[i].config.Limit || p.pluckers[i].isFinished {
+		return
 	}
+
+	if p.pluckers[i].numActivated < len(p.pluckers[i].activators) {
+		// look for activators
+		if curByte == p.pluckers[i].activators[p.pluckers[i].numActivated][p.pluckers[i].activeI] {
+			p.pluckers[i].activeI++
+			if p.pluckers[i].activeI == len(p.pluckers[i].activators[p.pluckers[i].numActivated]) {
+				log.Info(string(curByte), "Activated")
+				p.pluckers[i].numActivated++
+				p.pluckers[i].activeI = 0
+			}
+		} else {
+			p.pluckers[i].activeI = 0
+		}
+	} else {
+		// add to capture
+		p.pluckers[i].captureByte[p.pluckers[i].captureI] = curByte
+		p.pluckers[i].captureI++
+		// look for deactivators
+		if curByte == p.pluckers[i].deactivator[p.pluckers[i].deactiveI] {
+			p.pluckers[i].deactiveI++
+			if p.pluckers[i].deactiveI == len(p.pluckers[i].deactivator) {
+				log.Info(string(curByte), "Deactivated")
+				// add capture
+				log.Info(string(p.pluckers[i].captureByte[:p.pluckers[i].captureI-len(p.pluckers[i].deactivator)]))
+				tempByte := make([]byte, p.pluckers[i].captureI-len(p.pluckers[i].deactivator))
+				copy(tempByte, p.pluckers[i].captureByte[:p.pluckers[i].captureI-len(p.pluckers[i].deactivator)])
+				if p.pluckers[i].config.Sanitize {
+					tempByte = bytes.Replace(tempByte, []byte("\\u003c"), []byte("<"), -1)
+					tempByte = bytes.Replace(tempByte, []byte("\\u003e"), []byte(">"), -1)
+					tempByte = bytes.Replace(tempByte, []byte("\\u0026"), []byte("&"), -1)
+					tempByte = []byte(striphtml.StripTags(html.UnescapeString(string(tempByte))))
+				}
+				tempByte = bytes.TrimSpace(tempByte)
+				p.pluckers[i].captured = append(p.pluckers[i].captured, tempByte)
+				// reset
+				p.pluckers[i].numActivated = p.pluckers[i].permanent
+				p.pluckers[i].deactiveI = 0
+				p.pluckers[i].captureI = 0
+			}
+		} else {
+			p.pluckers[i].activeI = 0
+			p.pluckers[i].deactiveI = 0
+		}
+	}
+
+	// look for finisher
+	if p.pluckers[i].finisher != nil {
+		if curByte == p.pluckers[i].finisher[p.pluckers[i].finisherI] {
+			p.pluckers[i].finisherI++
+			if p.pluckers[i].finisherI == len(p.pluckers[i].finisher) {
+				log.Info(string(curByte), "Finished")
+				p.pluckers[i].isFinished = true
+				return
+			}
+		} else {
+			p.pluckers[i].finisherI = 0
+		}
+	}
+
 	return
+}
+
+// worker runs through all the bytes for each plucker
+func (p *Plucker) worker(i int, jobs <-chan []byte, results chan<- bool) {
+	for allBytes := range jobs {
+		for _, curByte := range allBytes {
+			err := p.pluckByte(curByte, i)
+			if err != nil {
+				results <- false
+			}
+		}
+		results <- true
+	}
 }
 
 // Pluck takes a buffered reader stream and
 // extracts the text from it
 func (p *Plucker) Pluck(r *bufio.Reader) (err error) {
 	allBytes, _ := r.ReadBytes(0)
-	var allLimitsReached bool
-	for _, curByte := range allBytes {
-		allLimitsReached, err = p.pluckByte(curByte)
-		if allLimitsReached {
-			log.Info("All limits reached")
-			break
-		}
-		if err != nil {
-			return
-		}
+	numJobs := len(p.pluckers)
+	chanJobs := make(chan []byte, numJobs)
+	chanResults := make(chan bool, numJobs)
+	for w := 0; w < numJobs; w++ {
+		go p.worker(w, chanJobs, chanResults)
+	}
+	for w := 0; w < numJobs; w++ {
+		chanJobs <- allBytes
+	}
+	close(chanJobs)
+	for w := 0; w < numJobs; w++ {
+		<-chanResults
 	}
 	p.generateResult()
 	return
