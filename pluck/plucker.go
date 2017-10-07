@@ -5,7 +5,6 @@ import (
 	"bytes"
 	"encoding/json"
 	"html"
-	"io"
 	"io/ioutil"
 	"net/http"
 	"os"
@@ -181,8 +180,8 @@ func (p *Plucker) PluckURL(url string) (err error) {
 // Pluck takes a buffered reader stream and
 // extracts the text from it
 func (p *Plucker) Pluck(r *bufio.Reader) (err error) {
-	for {
-		curByte, errRead := r.ReadByte()
+	allBytes, _ := r.ReadBytes(0)
+	for _, curByte := range allBytes {
 		allLimitsReached := true
 		for i := range p.pluckers {
 			if len(p.pluckers[i].captured) == p.pluckers[i].config.Limit || p.pluckers[i].isFinished {
@@ -251,7 +250,7 @@ func (p *Plucker) Pluck(r *bufio.Reader) (err error) {
 
 		}
 
-		if errRead == io.EOF || allLimitsReached {
+		if allLimitsReached {
 			break
 		}
 	}
