@@ -15,6 +15,18 @@ func BenchmarkParseFile(b *testing.B) {
 	}
 }
 
+func TestPluck0(t *testing.T) {
+	p, _ := New()
+	p.Verbose(true)
+	err := p.Load("test/config.toml")
+	if err != nil {
+		t.Error(err)
+	}
+	err = p.PluckFile("test/test.txt")
+	if err != nil {
+		t.Error(err)
+	}
+}
 func TestPluck1(t *testing.T) {
 	p, err := New()
 	p.Verbose(false)
@@ -147,7 +159,7 @@ func TestPluckSkipSection(t *testing.T) {
 
 func TestPluckCutSection(t *testing.T) {
 	p, err := New()
-	p.Verbose(false)
+	p.Verbose(true)
 	if err != nil {
 		t.Error(err)
 	}

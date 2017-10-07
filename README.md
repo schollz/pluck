@@ -194,7 +194,7 @@ The [state of the art for xpath is `lxml`, based on libxml2](http://lxml.de/perf
 | Language  | Rate |
 | ------------- | ------------- |
 | `lxml` (Python3.5)  | 306 / s  |
-| pluck | 737 / s |
+| pluck | 1021 / s |
 
 A real-world example I use *pluck* for is processing 1,200 HTML files in parallel, compared to running `lxml` in parallel:
 
