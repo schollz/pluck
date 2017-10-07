@@ -12,9 +12,7 @@
 
 *pluck* makes text extraction intuitive and [fast](https://github.com/schollz/pluck#current-benchmark). You can specify an extraction in nearly the same way you'd tell a person trying to extract the text by hand: "OK Bob, every time you find *X* and then *Y*, copy down everything you see until you encounter *Z*." 
 
-In *pluck*, *X* and *Y* are called *activators* and *Z* is called the *deactivator*. The file/URL being plucked is streamed byte-by-byte into a finite state machine. Once all *activators* are found, the following bytes are saved to a buffer, which is added to a list of results once the *deactivator* is found. 
-
-*The file is read only once, and multiple queries are extracted simultaneously.* Alos, there is no requirement on the file format (e.g. XML/HTML), as long as its text.
+In *pluck*, *X* and *Y* are called *activators* and *Z* is called the *deactivator*. The file/URL being plucked is parsed (or streamed) byte-by-byte into a finite state machine. Once all *activators* are found, the following bytes are saved to a buffer, which is added to a list of results once the *deactivator* is found. Multiple queries are extracted simultaneously and there is no requirement on the file format (e.g. XML/HTML), as long as its text.
 
 
 # Why?
@@ -31,13 +29,11 @@ Yes basically. Here is [an (simple) example](https://regex101.com/r/xt7fVr/1):
 
 Basically, this should try and match everything before a `Z` and after we've seen both `X` and `Y`, in any order. This is not a complete example, but it shows the similarity.
 
-
 The benefit with *pluck* is simplicity. You don't have to worry about escaping the right characters, nor do you need to know any regex syntax (which is not simple). Also *pluck* is hard-coded for matching this specific kind of pattern simultaneously, so there is no cost for generating a new deterministic finite automaton from multiple regex.
 
 ### Doesn't cascadia already do this?
 
-Yes, there is already [a command-line tool](https://github.com/suntong/cascadia) to extract structured information from XML/HTML. There are many benefits to *cascadia*, namely you can do block selection. If you don't have structured data, *pluck* is advantageous (it extracts from any file). Also, with *pluck* you don't need to learn CSS selection.
-
+Yes, there is already [a command-line tool](https://github.com/suntong/cascadia) to extract structured information from XML/HTML. There are many benefits to *cascadia*, namely you can do a lot more complex things with structured data. If you don't have highly structured data, *pluck* is advantageous (it extracts from any file). Also, with *pluck* you don't need to learn CSS selection.
 
 # Getting Started
 
@@ -74,7 +70,7 @@ $ pluck -a '<' -a 'href' -a '"' -d '"' -l 10 -f nytimes.html
 }
 ```
 
-The `-a` specifies *activators* and can be specified multiple times. Once all *activators* are found, in order, the bytes are captured. The `-d` specifies a *deactivator*. Once a *deactivator* is found, then it terminates capturing and resets and begins searching again. The `-l` specifies the limit (optional), after reaching this limit it stops searching.
+The `-a` specifies *activators* and can be specified multiple times. Once all *activators* are found, in order, the bytes are captured. The `-d` specifies a *deactivator*. Once a *deactivator* is found, then it terminates capturing and resets and begins searching again. The `-l` specifies the limit (optional), after reaching the limit (`10` in this example) it stops searching.
 
 
 ## Advanced usage
@@ -127,11 +123,11 @@ $ pluck -c config.toml -u https://goo.gl/DHmqmv
 }
 ```
 
-### Use blocks with *Permanent* and *Finisher*
+### Extract structured data
 
-Lets say you want to tell Bob "OK Bob, first look for *W*. Then, every time you find *X* and then *Y*, copy down everything you see until you encounter *Z*. If you see *U* then stop what you are doing immediately!"  In this case, *W*, *X*, and *Y* are activators but *W* is a "Permanent" activator. Once *W* is found, Bob forgets about looking for it anymore. *U* is a "Finisher" which tells Bob to stop looking for anything and return whatever result was found. 
+Lets say you want to tell Bob "OK Bob, first look for *W*. Then, every time you find *X* and then *Y*, copy down everything you see until you encounter *Z*. Also, stop if you see *U*, even if you are not at the end."  In this case, *W*, *X*, and *Y* are activators but *W* is a "Permanent" activator. Once *W* is found, Bob forgets about looking for it anymore. *U* is a "Finisher" which tells Bob to stop looking for anything and return whatever result was found. 
 
-You can extract information from blocks in *pluck* by using these two keywords: "*Permanent*" and "*Finisher*". Permanent determines how many of the activators (from the left to right) will stay activated forever, once activated. Finisher is a new string that will retire the current plucker when found and not capture anything in the buffer.
+You can extract information from blocks in *pluck* by using these two keywords: "*permanent*" and "*finisher*". The *permanent* number determines how many of the activators (from the left to right) will stay activated forever, once activated. The *finisher* keyword is a new string that will retire the current plucker when found and not capture anything in the buffer.
 
 For example, suppose you want to only extract `link3` and `link4` from the following: 
 
@@ -147,7 +143,7 @@ For example, suppose you want to only extract `link3` and `link4` from the follo
 <a href="link6">6</a>
 ```
 
-You can add "Section 2" as an activator and set Permanent to 1 so that "Section 2" will continue to be activated. Then you want to finish the plucker when it hits "Section 3". This should be reflected in the `config.toml` as
+You can add "Section 2" as an activator and set permanent to `1` so that only the first activator ("Section 2") will continue to remain activated after finding the deactivator. Then you want to finish the plucker when it hits "Section 3", so we can set the finisher keyword as this. Then `config.toml` is
 
 ```
 [[pluck]]
@@ -193,8 +189,8 @@ The [state of the art for xpath is `lxml`, based on libxml2](http://lxml.de/perf
 
 | Language  | Rate |
 | ------------- | ------------- |
-| `lxml` (Python3.5)  | 306 / s  |
-| pluck | 1021 / s |
+| `lxml` (Python3.5)  | 300 / s  |
+| pluck | 1270 / s |
 
 A real-world example I use *pluck* for is processing 1,200 HTML files in parallel, compared to running `lxml` in parallel:
 
@@ -211,6 +207,7 @@ I'd like to benchmark a Perl regex, although I don't know how to write this kind
 - [ ] Quotes match to quotes (single or double)?
 - [ ] Allow piping from standard in?
 - [x] API to handle strings, e.g. `PluckString(s string)`
+- [x] Add parallelism
 
 # License
 
