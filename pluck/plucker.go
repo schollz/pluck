@@ -278,7 +278,7 @@ func (p *Plucker) ResultJSON(indent ...bool) string {
 		b, _ := json.Marshal(p.result[key])
 		totalResults += len(b)
 	}
-	if totalResults == 2 { // results == 2 because its just []
+	if totalResults == len(p.result)*2 { // results == 2 because its just []
 		return ""
 	}
 	var err error
