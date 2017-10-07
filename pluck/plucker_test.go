@@ -116,3 +116,63 @@ func TestPluckSongs(t *testing.T) {
     ]
 }`, p.ResultJSON())
 }
+
+func TestPluckSkipSection(t *testing.T) {
+	p, err := New()
+	p.Verbose(false)
+	if err != nil {
+		t.Error(err)
+	}
+	p.Add(Config{
+		Activators:  []string{"Section 2", "a", "href", `"`},
+		Permanent:   1,
+		Deactivator: `"`,
+	})
+	err = p.PluckString(`
+<h1>Section 1</h1>
+<a href="link1">1</a>
+<a href="link2">2</a>
+<h1>Section 2</h1>
+<a href="link3">3</a>
+<a href="link4">4</a>
+`)
+	assert.Nil(t, err)
+	assert.Equal(t, `{
+    "0": [
+        "link3",
+        "link4"
+    ]
+}`, p.ResultJSON())
+}
+
+func TestPluckCutSection(t *testing.T) {
+	p, err := New()
+	p.Verbose(false)
+	if err != nil {
+		t.Error(err)
+	}
+	p.Add(Config{
+		Activators:  []string{"Section 2", "a", "href", `"`},
+		Permanent:   1,
+		Deactivator: `"`,
+		Finisher:    "Section 3",
+	})
+	err = p.PluckString(`
+<h1>Section 1</h1>
+<a href="link1">1</a>
+<a href="link2">2</a>
+<h1>Section 2</h1>
+<a href="link3">3</a>
+<a href="link4">4</a>
+<h1>Section 3</h1>
+<a href="link5">5</a>
+<a href="link6">6</a>
+`)
+	assert.Nil(t, err)
+	assert.Equal(t, `{
+    "0": [
+        "link3",
+        "link4"
+    ]
+}`, p.ResultJSON())
+}

@@ -127,6 +127,45 @@ $ pluck -c config.toml -u https://goo.gl/DHmqmv
 }
 ```
 
+### Use blocks with *Permanent* and *Finisher*
+
+You can extract information from blocks by using two more keywords: "*Permanent*" and "*Finisher*". Permanent determines how many of the activators (from the left to right) will stay activated forever, once activated. Finisher is a new string that will retire the current plucker when found and not capture anything in the buffer.
+
+For example, suppose you want to only extract `link3` and `link4` from the following: 
+
+```html
+<h1>Section 1</h1>
+<a href="link1">1</a>
+<a href="link2">2</a>
+<h1>Section 2</h1>
+<a href="link3">3</a>
+<a href="link4">4</a>
+<h1>Section 3</h1>
+<a href="link5">5</a>
+<a href="link6">6</a>
+```
+
+You can add "Section 2" as an activator and set Permanent to 1 so that "Section 2" will continue to be activated. Then you want to finish the plucker when it hits "Section 3". This should be reflected in the `config.toml` as
+
+```
+[[pluck]]
+activators = ["Section 2","a","href",'"']
+permanent = 1     # designates that the first 1 activators will persist
+deactivator = '"'
+finisher = "Section 3"
+```
+
+will result in the following:
+
+```json
+{
+    "0": [
+        "link3",
+        "link4",
+    ]
+}
+```
+
 
 ### More examples
 
