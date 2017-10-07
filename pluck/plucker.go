@@ -105,7 +105,7 @@ func (p *Plucker) Add(c Config) {
 	if len(c.Finisher) > 0 {
 		u.finisher = []byte(c.Finisher)
 	} else {
-		u.finisher = []byte("alskdjlaskdjcmaw93naw934e8nfjaosjfnoa3w89n")
+		u.finisher = nil
 	}
 	u.captureByte = make([]byte, 10000)
 	u.captured = [][]byte{}
@@ -191,18 +191,6 @@ func (p *Plucker) Pluck(r *bufio.Reader) (err error) {
 				allLimitsReached = false
 			}
 
-			// look for finisher
-			if curByte == p.pluckers[i].finisher[p.pluckers[i].finisherI] {
-				p.pluckers[i].finisherI++
-				if p.pluckers[i].finisherI == len(p.pluckers[i].finisher) {
-					log.Info(string(curByte), "Finished")
-					p.pluckers[i].isFinished = true
-					continue
-				}
-			} else {
-				p.pluckers[i].finisherI = 0
-			}
-
 			if p.pluckers[i].numActivated < len(p.pluckers[i].activators) {
 				// look for activators
 				if curByte == p.pluckers[i].activators[p.pluckers[i].numActivated][p.pluckers[i].activeI] {
@@ -244,6 +232,20 @@ func (p *Plucker) Pluck(r *bufio.Reader) (err error) {
 				} else {
 					p.pluckers[i].activeI = 0
 					p.pluckers[i].deactiveI = 0
+				}
+			}
+
+			// look for finisher
+			if p.pluckers[i].finisher != nil {
+				if curByte == p.pluckers[i].finisher[p.pluckers[i].finisherI] {
+					p.pluckers[i].finisherI++
+					if p.pluckers[i].finisherI == len(p.pluckers[i].finisher) {
+						log.Info(string(curByte), "Finished")
+						p.pluckers[i].isFinished = true
+						continue
+					}
+				} else {
+					p.pluckers[i].finisherI = 0
 				}
 			}
 
