@@ -159,7 +159,7 @@ $ pluck -a 'Section 2' -a '<a' -a 'href' -a '"' -d '"' -p 1 -finisher "Section 3
 				result = strings.Join(results, "\n\n")
 			}
 		} else {
-			result = p.ResultJSON()
+			result = p.ResultJSON(true)
 		}
 		if c.GlobalString("output") != "" {
 			return ioutil.WriteFile(c.GlobalString("output"), []byte(result), 0644)

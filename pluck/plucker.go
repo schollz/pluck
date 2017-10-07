@@ -132,6 +132,7 @@ func (p *Plucker) Load(f string) (err error) {
 		c.Limit = conf.Pluck[i].Limit
 		c.Name = conf.Pluck[i].Name
 		c.Permanent = conf.Pluck[i].Permanent
+		c.Sanitize = conf.Pluck[i].Sanitize
 		p.Add(c)
 	}
 	return
