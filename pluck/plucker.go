@@ -75,6 +75,16 @@ func (p *Plucker) Verbose(makeVerbose bool) {
 	}
 }
 
+// Configuration returns an array of the current
+// Config for each plucker.
+func (p *Plucker) Configuration() (c []Config) {
+	c = make([]Config, len(p.pluckers))
+	for i, unit := range p.pluckers {
+		c[i] = unit.config
+	}
+	return
+}
+
 // Add adds a unit
 // to pluck with specified parameters
 func (p *Plucker) Add(c Config) {
@@ -100,6 +110,7 @@ func (p *Plucker) Add(c Config) {
 	u.captureByte = make([]byte, 10000)
 	u.captured = [][]byte{}
 	p.pluckers = append(p.pluckers, u)
+	log.Infof("Added plucker %+v", c)
 }
 
 // Load will load a YAML configuration file of untis
@@ -259,8 +270,17 @@ func (p *Plucker) Pluck(r *bufio.Reader) (err error) {
 	return
 }
 
-// ResultJSON resturns the result, formatted as JSON
+// ResultJSON returns the result, formatted as JSON.
+// If their are no results, it returns an empty string.
 func (p *Plucker) ResultJSON() string {
+	totalResults := 0
+	for key := range p.result {
+		b, _ := json.Marshal(p.result[key])
+		totalResults += len(b)
+	}
+	if totalResults == 2 { // results == 2 because its just []
+		return ""
+	}
 	resultJSON, err := json.MarshalIndent(p.result, "", "    ")
 	if err != nil {
 		log.Error(errors.Wrap(err, "result marshalling failed"))
