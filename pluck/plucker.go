@@ -365,7 +365,66 @@ func (p *Plucker) PluckStream(r *bufio.Reader) (err error) {
 				continue
 			}
 			finished = false
-			p.pluckByte(curByte, i)
+			if p.pluckers[i].numActivated < len(p.pluckers[i].activators) {
+				// look for activators
+				if curByte == p.pluckers[i].activators[p.pluckers[i].numActivated][p.pluckers[i].activeI] {
+					p.pluckers[i].activeI++
+					if p.pluckers[i].activeI == len(p.pluckers[i].activators[p.pluckers[i].numActivated]) {
+						log.Info(string(curByte), "Activated")
+						p.pluckers[i].numActivated++
+						p.pluckers[i].activeI = 0
+					}
+				} else {
+					p.pluckers[i].activeI = 0
+				}
+			} else {
+				// add to capture
+				p.pluckers[i].captureByte[p.pluckers[i].captureI] = curByte
+				p.pluckers[i].captureI++
+				// look for deactivators
+				if curByte == p.pluckers[i].deactivator[p.pluckers[i].deactiveI] {
+					p.pluckers[i].deactiveI++
+					if p.pluckers[i].deactiveI == len(p.pluckers[i].deactivator) {
+						log.Info(string(curByte), "Deactivated")
+						// add capture
+						log.Info(string(p.pluckers[i].captureByte[:p.pluckers[i].captureI-len(p.pluckers[i].deactivator)]))
+						tempByte := make([]byte, p.pluckers[i].captureI-len(p.pluckers[i].deactivator))
+						copy(tempByte, p.pluckers[i].captureByte[:p.pluckers[i].captureI-len(p.pluckers[i].deactivator)])
+						if p.pluckers[i].config.Sanitize {
+							tempByte = bytes.Replace(tempByte, []byte("\\u003c"), []byte("<"), -1)
+							tempByte = bytes.Replace(tempByte, []byte("\\u003e"), []byte(">"), -1)
+							tempByte = bytes.Replace(tempByte, []byte("\\u0026"), []byte("&"), -1)
+							tempByte = []byte(striphtml.StripTags(html.UnescapeString(string(tempByte))))
+						}
+						tempByte = bytes.TrimSpace(tempByte)
+						p.pluckers[i].captured = append(p.pluckers[i].captured, tempByte)
+						// reset
+						p.pluckers[i].numActivated = p.pluckers[i].permanent
+						p.pluckers[i].deactiveI = 0
+						p.pluckers[i].captureI = 0
+					}
+				} else {
+					p.pluckers[i].activeI = 0
+					p.pluckers[i].deactiveI = 0
+				}
+			}
+
+			// look for finisher
+			if p.pluckers[i].finisher != nil {
+				if curByte == p.pluckers[i].finisher[p.pluckers[i].finisherI] {
+					p.pluckers[i].finisherI++
+					if p.pluckers[i].finisherI == len(p.pluckers[i].finisher) {
+						log.Info(string(curByte), "Finished")
+						p.pluckers[i].isFinished = true
+					}
+				} else {
+					p.pluckers[i].finisherI = 0
+				}
+			}
+
+			if len(p.pluckers[i].captured) == p.pluckers[i].config.Limit {
+				p.pluckers[i].isFinished = true
+			}
 		}
 	}
 	p.generateResult()
