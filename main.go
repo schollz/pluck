@@ -43,6 +43,9 @@ $ pluck -c config.toml -u https://goo.gl/DHmqmv
 
 4) Get headlines from news.google.com 
 $ pluck -a 'role="heading"' -a '>' -d '<' -t -s -u 'https://news.google.com/news/?ned=us&hl=en'
+
+5) Pluck items from a block
+$ pluck -a 'Section 2' -a '<a' -a 'href' -a '"' -d '"' -p 1 -finisher "Section 3" -u https://cowyo.com/test38/raw
 		`
 	app.Flags = []cli.Flag{
 		cli.StringFlag{
@@ -67,7 +70,17 @@ $ pluck -a 'role="heading"' -a '>' -d '<' -t -s -u 'https://news.google.com/news
 		cli.StringFlag{
 			Name:  "deactivator,d",
 			Value: "",
-			Usage: "text to find to stop capture",
+			Usage: "text to find to restart capturing",
+		},
+		cli.IntFlag{
+			Name:  "permanent,p",
+			Value: 0,
+			Usage: "number of activators that stay activated (from left to right)",
+		},
+		cli.StringFlag{
+			Name:  "finisher",
+			Value: "",
+			Usage: "text to find to stop capturing completely",
 		},
 		cli.IntFlag{
 			Name:  "limit,l",
@@ -118,6 +131,8 @@ $ pluck -a 'role="heading"' -a '>' -d '<' -t -s -u 'https://news.google.com/news
 				Deactivator: c.GlobalString("deactivator"),
 				Limit:       c.GlobalInt("limit"),
 				Sanitize:    c.GlobalBool("sanitize"),
+				Finisher:    c.GlobalString("finisher"),
+				Permanent:   c.GlobalInt("permanent"),
 			})
 		}
 
