@@ -189,12 +189,12 @@ $ go test -cover
 
 ## Current benchmark
 
-The [state of the art for xpath is `lxml`, based on libxml2](http://lxml.de/performance.html). Here is a comparison for plucking the same data from the same file, run on Windows i7-3770 CPU @ 3.40GHz.
+The [state of the art for xpath is `lxml`, based on libxml2](http://lxml.de/performance.html). Here is a comparison for plucking the same data from the same file, run on Intel i5-4310U CPU @ 2.00GHz × 4. (Run Python benchmark `cd pluck/test && python3 main.py`).
 
 | Language  | Rate |
 | ------------- | ------------- |
-| `lxml` (Python3.6)  | 260 / s  |
-| pluck | 1250 / s |
+| `lxml` (Python3.5)  | 306 / s  |
+| pluck | 737 / s |
 
 A real-world example I use *pluck* for is processing 1,200 HTML files in parallel, compared to running `lxml` in parallel:
 
