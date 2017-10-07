@@ -25,5 +25,5 @@ def parseHTML():
 if __name__ == '__main__':
     print(json.dumps(parseHTML(), indent=2))
     import timeit
-    print(timeit.timeit("parseHTML()",
-                        setup="from __main__ import parseHTML", number=100) / 100 * 1000)
+    print(1/(timeit.timeit("parseHTML()",
+                        setup="from __main__ import parseHTML", number=100) / 100))
