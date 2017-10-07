@@ -5,6 +5,7 @@ import (
 	"bytes"
 	"encoding/json"
 	"html"
+	"io"
 	"io/ioutil"
 	"net/http"
 	"os"
@@ -139,29 +140,37 @@ func (p *Plucker) Load(f string) (err error) {
 
 // PluckString takes a string as input
 // and uses the specified parameters and generates
-// a map (p.result) with the finished results
-func (p *Plucker) PluckString(s string) (err error) {
+// a map (p.result) with the finished results.
+// The streaming can be enabled by setting it to true.
+func (p *Plucker) PluckString(s string, stream ...bool) (err error) {
 	r := bufio.NewReader(strings.NewReader(s))
+	if len(stream) > 0 && stream[0] {
+		return p.PluckStream(r)
+	}
 	return p.Pluck(r)
 }
 
 // PluckFile takes a file as input
 // and uses the specified parameters and generates
-// a map (p.result) with the finished results
-func (p *Plucker) PluckFile(f string) (err error) {
+// a map (p.result) with the finished results. The streaming
+// can be enabled by setting it to true.
+func (p *Plucker) PluckFile(f string, stream ...bool) (err error) {
 	r1, err := os.Open(f)
 	defer r1.Close()
 	if err != nil {
 		return
 	}
 	r := bufio.NewReader(r1)
+	if len(stream) > 0 && stream[0] {
+		return p.PluckStream(r)
+	}
 	return p.Pluck(r)
 }
 
 // PluckURL takes a URL as input
 // and uses the specified parameters and generates
 // a map (p.result) with the finished results
-func (p *Plucker) PluckURL(url string) (err error) {
+func (p *Plucker) PluckURL(url string, stream ...bool) (err error) {
 	client := &http.Client{}
 	request, err := http.NewRequest("GET", url, nil)
 	if err != nil {
@@ -174,15 +183,14 @@ func (p *Plucker) PluckURL(url string) (err error) {
 	}
 	defer resp.Body.Close()
 	r := bufio.NewReader(resp.Body)
+	if len(stream) > 0 && stream[0] {
+		return p.PluckStream(r)
+	}
 	return p.Pluck(r)
 }
 
 // pluckByte is the finite state machine processing of the plucker
 func (p *Plucker) pluckByte(curByte byte, i int) (err error) {
-	if len(p.pluckers[i].captured) == p.pluckers[i].config.Limit || p.pluckers[i].isFinished {
-		return
-	}
-
 	if p.pluckers[i].numActivated < len(p.pluckers[i].activators) {
 		// look for activators
 		if curByte == p.pluckers[i].activators[p.pluckers[i].numActivated][p.pluckers[i].activeI] {
@@ -241,24 +249,34 @@ func (p *Plucker) pluckByte(curByte byte, i int) (err error) {
 		}
 	}
 
+	if len(p.pluckers[i].captured) == p.pluckers[i].config.Limit {
+		p.pluckers[i].isFinished = true
+	}
 	return
 }
 
 // worker runs through all the bytes for each plucker
 func (p *Plucker) worker(i int, jobs <-chan []byte, results chan<- bool) {
+	done := true
 	for allBytes := range jobs {
 		for _, curByte := range allBytes {
 			err := p.pluckByte(curByte, i)
 			if err != nil {
-				results <- false
+				done = false
+				break
+			}
+			if p.pluckers[i].isFinished {
+				break
 			}
 		}
-		results <- true
+		results <- done
 	}
 }
 
 // Pluck takes a buffered reader stream and
-// extracts the text from it
+// extracts the text from it. This spawns a thread for
+// each plucker and copies the entire buffer to memory,
+// so that each plucker works in parallel.
 func (p *Plucker) Pluck(r *bufio.Reader) (err error) {
 	allBytes, _ := r.ReadBytes(0)
 	numJobs := len(p.pluckers)
@@ -273,6 +291,32 @@ func (p *Plucker) Pluck(r *bufio.Reader) (err error) {
 	close(chanJobs)
 	for w := 0; w < numJobs; w++ {
 		<-chanResults
+	}
+	p.generateResult()
+	return
+}
+
+// PluckStream takes a buffered reader stream and streams one
+// byte at a time and processes all pluckers serially and
+// simultaneously.
+func (p *Plucker) PluckStream(r *bufio.Reader) (err error) {
+	var finished bool
+	for {
+		curByte, errRead := r.ReadByte()
+		if errRead == io.EOF || finished {
+			break
+		}
+		finished = true
+		for i := range p.pluckers {
+			if p.pluckers[i].isFinished {
+				continue
+			}
+			finished = false
+			err = p.pluckByte(curByte, i)
+			if err != nil {
+				return
+			}
+		}
 	}
 	p.generateResult()
 	return
