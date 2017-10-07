@@ -51,7 +51,7 @@ func TestPluck1(t *testing.T) {
         "Mammút – “The Moon Will Never Turn On Me”",
         "Songhoy Blues \u0026#8211; Voter"
     ]
-}`, p.ResultJSON())
+}`, p.ResultJSON(true))
 
 	p.Load("test/food.toml")
 	p.PluckURL("http://www.foodnetwork.com/recipes/food-network-kitchen/15-minute-shrimp-tacos-with-spicy-chipotle-slaw-3676441")
@@ -92,7 +92,7 @@ func TestPluck2(t *testing.T) {
         "Cloud Control \u0026#8211; Rainbow City",
         "Kevin Morby \u0026#8211; Come to Me Now"
     ]
-}`, p.ResultJSON())
+}`, p.ResultJSON(true))
 }
 
 func TestPluckSongs(t *testing.T) {
@@ -114,7 +114,7 @@ func TestPluckSongs(t *testing.T) {
         "/music/Spoon/_/Inside+Out",
         "/music/Real+Estate/_/Crime"
     ]
-}`, p.ResultJSON())
+}`, p.ResultJSON(true))
 }
 
 func TestPluckSkipSection(t *testing.T) {
@@ -142,7 +142,7 @@ func TestPluckSkipSection(t *testing.T) {
         "link3",
         "link4"
     ]
-}`, p.ResultJSON())
+}`, p.ResultJSON(true))
 }
 
 func TestPluckCutSection(t *testing.T) {
@@ -169,10 +169,14 @@ func TestPluckCutSection(t *testing.T) {
 <a href="link6">6</a>
 `)
 	assert.Nil(t, err)
-	assert.Equal(t, `{
-    "0": [
-        "link3",
-        "link4"
-    ]
-}`, p.ResultJSON())
+	assert.Equal(t, `{"0":["link3","link4"]}`, p.ResultJSON())
+
+	assert.Equal(t, []Config{Config{
+		Activators:  []string{"Section 2", "a", "href", `"`},
+		Permanent:   1,
+		Deactivator: `"`,
+		Finisher:    "Section 3",
+		Limit:       -1,
+		Name:        "0",
+	}}, p.Configuration())
 }

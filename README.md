@@ -4,7 +4,7 @@
     width="260" height="80" border="0" alt="pluck">
 <br>
 <a href="https://github.com/schollz/pluck/releases/latest"><img src="https://img.shields.io/badge/version-1.0.0-brightgreen.svg?style=flat-square" alt="Version"></a>
-<img src="https://img.shields.io/badge/coverage-91%25-green.svg?style=flat-square" alt="Code Coverage">
+<img src="https://img.shields.io/badge/coverage-92%25-green.svg?style=flat-square" alt="Code Coverage">
 <a href="https://godoc.org/github.com/schollz/pluck/pluck"><img src="https://img.shields.io/badge/godoc-reference-blue.svg?style=flat-square" alt="Code Coverage"></a>
 </p>
 

@@ -272,7 +272,7 @@ func (p *Plucker) Pluck(r *bufio.Reader) (err error) {
 
 // ResultJSON returns the result, formatted as JSON.
 // If their are no results, it returns an empty string.
-func (p *Plucker) ResultJSON() string {
+func (p *Plucker) ResultJSON(indent ...bool) string {
 	totalResults := 0
 	for key := range p.result {
 		b, _ := json.Marshal(p.result[key])
@@ -281,7 +281,13 @@ func (p *Plucker) ResultJSON() string {
 	if totalResults == 2 { // results == 2 because its just []
 		return ""
 	}
-	resultJSON, err := json.MarshalIndent(p.result, "", "    ")
+	var err error
+	var resultJSON []byte
+	if len(indent) > 0 && indent[0] {
+		resultJSON, err = json.MarshalIndent(p.result, "", "    ")
+	} else {
+		resultJSON, err = json.Marshal(p.result)
+	}
 	if err != nil {
 		log.Error(errors.Wrap(err, "result marshalling failed"))
 	}
