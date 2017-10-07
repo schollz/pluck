@@ -129,7 +129,9 @@ $ pluck -c config.toml -u https://goo.gl/DHmqmv
 
 ### Use blocks with *Permanent* and *Finisher*
 
-You can extract information from blocks by using two more keywords: "*Permanent*" and "*Finisher*". Permanent determines how many of the activators (from the left to right) will stay activated forever, once activated. Finisher is a new string that will retire the current plucker when found and not capture anything in the buffer.
+Lets say you want to tell Bob "OK Bob, first look for *W*. Then, every time you find *X* and then *Y*, copy down everything you see until you encounter *Z*. If you see *U* then stop what you are doing immediately!"  In this case, *W*, *X*, and *Y* are activators but *W* is a "Permanent" activator. Once *W* is found, Bob forgets about looking for it anymore. *U* is a "Finisher" which tells Bob to stop looking for anything and return whatever result was found. 
+
+You can extract information from blocks in *pluck* by using these two keywords: "*Permanent*" and "*Finisher*". Permanent determines how many of the activators (from the left to right) will stay activated forever, once activated. Finisher is a new string that will retire the current plucker when found and not capture anything in the buffer.
 
 For example, suppose you want to only extract `link3` and `link4` from the following: 
 
