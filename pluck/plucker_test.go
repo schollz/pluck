@@ -74,6 +74,7 @@ func TestPluck1(t *testing.T) {
     ]
 }`, p.ResultJSON(true))
 
+	p, _ = New()
 	p.Load("test/food.toml")
 	p.PluckURL("http://www.foodnetwork.com/recipes/food-network-kitchen/15-minute-shrimp-tacos-with-spicy-chipotle-slaw-3676441")
 	assert.Equal(t, `15-Minute Shrimp Tacos with Spicy Chipotle Slaw Recipe | Food Network Kitchen | Food Network`, p.Result()["title"])
