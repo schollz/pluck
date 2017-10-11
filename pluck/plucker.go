@@ -223,7 +223,9 @@ func (p *Plucker) pluckByte(curByte byte, i int) {
 				// add capture
 				log.Info(string(p.pluckers[i].captureByte[:p.pluckers[i].captureI-len(p.pluckers[i].deactivator)]))
 				tempByte := make([]byte, p.pluckers[i].captureI-len(p.pluckers[i].deactivator))
-				copy(tempByte, p.pluckers[i].captureByte[:p.pluckers[i].captureI-len(p.pluckers[i].deactivator)])
+				if p.pluckers[i].captureI-len(p.pluckers[i].deactivator) > 0 {
+					copy(tempByte, p.pluckers[i].captureByte[:p.pluckers[i].captureI-len(p.pluckers[i].deactivator)])
+				}
 				if p.pluckers[i].config.Sanitize {
 					tempByte = bytes.Replace(tempByte, []byte("\\u003c"), []byte("<"), -1)
 					tempByte = bytes.Replace(tempByte, []byte("\\u003e"), []byte(">"), -1)
