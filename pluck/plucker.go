@@ -117,13 +117,20 @@ func (p *Plucker) Add(c Config) {
 // Load will load a YAML configuration file of untis
 // to pluck with specified parameters
 func (p *Plucker) Load(f string) (err error) {
-	var conf configs
 	tomlData, err := ioutil.ReadFile(f)
 	if err != nil {
 		return errors.Wrap(err, "problem opening "+f)
 	}
 	log.Debugf("toml string: %s", string(tomlData))
-	_, err = toml.Decode(string(tomlData), &conf)
+	p.LoadFromString(string(tomlData))
+	return
+}
+
+// LoadFromString will load a YAML configuration file of untis
+// to pluck with specified parameters
+func (p *Plucker) LoadFromString(tomlString string) (err error) {
+	var conf configs
+	_, err = toml.Decode(tomlString, &conf)
 	log.Debugf("Loaded toml: %+v", conf)
 	for i := range conf.Pluck {
 		var c Config
