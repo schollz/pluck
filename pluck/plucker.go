@@ -28,6 +28,7 @@ type Config struct {
 	Limit       int      // specifies the number of times capturing can occur
 	Name        string   // the key in the returned map, after completion
 	Sanitize    bool
+	Maximum     int // maximum number of characters for a capture
 }
 
 type configs struct {
@@ -44,6 +45,7 @@ type pluckUnit struct {
 	config       Config
 	activators   [][]byte
 	permanent    int
+	maximum      int
 	deactivator  []byte
 	finisher     []byte
 	captured     [][]byte
@@ -108,6 +110,10 @@ func (p *Plucker) Add(c Config) {
 	} else {
 		u.finisher = nil
 	}
+	u.maximum = -1
+	if c.Maximum > 0 {
+		u.maximum = c.Maximum
+	}
 	u.captureByte = make([]byte, 100000)
 	u.captured = [][]byte{}
 	p.pluckers = append(p.pluckers, u)
@@ -141,6 +147,7 @@ func (p *Plucker) LoadFromString(tomlString string) (err error) {
 		c.Name = conf.Pluck[i].Name
 		c.Permanent = conf.Pluck[i].Permanent
 		c.Sanitize = conf.Pluck[i].Sanitize
+		c.Maximum = conf.Pluck[i].Maximum
 		p.Add(c)
 	}
 	return
@@ -197,142 +204,6 @@ func (p *Plucker) PluckURL(url string, stream ...bool) (err error) {
 	return p.Pluck(r)
 }
 
-// pluckByte is the finite state machine processing of the plucker
-func (p *Plucker) pluckByte(curByte byte, i int) {
-	if p.pluckers[i].numActivated < len(p.pluckers[i].activators) {
-		// look for activators
-		if curByte == p.pluckers[i].activators[p.pluckers[i].numActivated][p.pluckers[i].activeI] {
-			p.pluckers[i].activeI++
-			if p.pluckers[i].activeI == len(p.pluckers[i].activators[p.pluckers[i].numActivated]) {
-				log.Info(string(curByte), "Activated")
-				p.pluckers[i].numActivated++
-				p.pluckers[i].activeI = 0
-			}
-		} else {
-			p.pluckers[i].activeI = 0
-		}
-	} else {
-		// add to capture
-		p.pluckers[i].captureByte[p.pluckers[i].captureI] = curByte
-		p.pluckers[i].captureI++
-		// look for deactivators
-		if curByte == p.pluckers[i].deactivator[p.pluckers[i].deactiveI] {
-			p.pluckers[i].deactiveI++
-			if p.pluckers[i].deactiveI == len(p.pluckers[i].deactivator) {
-				log.Info(string(curByte), "Deactivated")
-				// add capture
-				log.Info(string(p.pluckers[i].captureByte[:p.pluckers[i].captureI-len(p.pluckers[i].deactivator)]))
-				tempByte := make([]byte, p.pluckers[i].captureI-len(p.pluckers[i].deactivator))
-				if p.pluckers[i].captureI-len(p.pluckers[i].deactivator) > 0 {
-					copy(tempByte, p.pluckers[i].captureByte[:p.pluckers[i].captureI-len(p.pluckers[i].deactivator)])
-				}
-				if p.pluckers[i].config.Sanitize {
-					tempByte = bytes.Replace(tempByte, []byte("\\u003c"), []byte("<"), -1)
-					tempByte = bytes.Replace(tempByte, []byte("\\u003e"), []byte(">"), -1)
-					tempByte = bytes.Replace(tempByte, []byte("\\u0026"), []byte("&"), -1)
-					tempByte = []byte(striphtml.StripTags(html.UnescapeString(string(tempByte))))
-				}
-				tempByte = bytes.TrimSpace(tempByte)
-				p.pluckers[i].captured = append(p.pluckers[i].captured, tempByte)
-				// reset
-				p.pluckers[i].numActivated = p.pluckers[i].permanent
-				p.pluckers[i].deactiveI = 0
-				p.pluckers[i].captureI = 0
-			}
-		} else {
-			p.pluckers[i].activeI = 0
-			p.pluckers[i].deactiveI = 0
-		}
-	}
-
-	// look for finisher
-	if p.pluckers[i].finisher != nil {
-		if curByte == p.pluckers[i].finisher[p.pluckers[i].finisherI] {
-			p.pluckers[i].finisherI++
-			if p.pluckers[i].finisherI == len(p.pluckers[i].finisher) {
-				log.Info(string(curByte), "Finished")
-				p.pluckers[i].isFinished = true
-			}
-		} else {
-			p.pluckers[i].finisherI = 0
-		}
-	}
-
-	if len(p.pluckers[i].captured) == p.pluckers[i].config.Limit {
-		p.pluckers[i].isFinished = true
-	}
-	return
-}
-
-func (p *Plucker) runPlucker(i int, allBytes []byte) {
-	for _, curByte := range allBytes {
-		if p.pluckers[i].numActivated < len(p.pluckers[i].activators) {
-			// look for activators
-			if curByte == p.pluckers[i].activators[p.pluckers[i].numActivated][p.pluckers[i].activeI] {
-				p.pluckers[i].activeI++
-				if p.pluckers[i].activeI == len(p.pluckers[i].activators[p.pluckers[i].numActivated]) {
-					log.Info(string(curByte), "Activated")
-					p.pluckers[i].numActivated++
-					p.pluckers[i].activeI = 0
-				}
-			} else {
-				p.pluckers[i].activeI = 0
-			}
-		} else {
-			// add to capture
-			p.pluckers[i].captureByte[p.pluckers[i].captureI] = curByte
-			p.pluckers[i].captureI++
-			// look for deactivators
-			if curByte == p.pluckers[i].deactivator[p.pluckers[i].deactiveI] {
-				p.pluckers[i].deactiveI++
-				if p.pluckers[i].deactiveI == len(p.pluckers[i].deactivator) {
-					log.Info(string(curByte), "Deactivated")
-					// add capture
-					log.Info(string(p.pluckers[i].captureByte[:p.pluckers[i].captureI-len(p.pluckers[i].deactivator)]))
-					tempByte := make([]byte, p.pluckers[i].captureI-len(p.pluckers[i].deactivator))
-					copy(tempByte, p.pluckers[i].captureByte[:p.pluckers[i].captureI-len(p.pluckers[i].deactivator)])
-					if p.pluckers[i].config.Sanitize {
-						tempByte = bytes.Replace(tempByte, []byte("\\u003c"), []byte("<"), -1)
-						tempByte = bytes.Replace(tempByte, []byte("\\u003e"), []byte(">"), -1)
-						tempByte = bytes.Replace(tempByte, []byte("\\u0026"), []byte("&"), -1)
-						tempByte = []byte(striphtml.StripTags(html.UnescapeString(string(tempByte))))
-					}
-					tempByte = bytes.TrimSpace(tempByte)
-					p.pluckers[i].captured = append(p.pluckers[i].captured, tempByte)
-					// reset
-					p.pluckers[i].numActivated = p.pluckers[i].permanent
-					p.pluckers[i].deactiveI = 0
-					p.pluckers[i].captureI = 0
-				}
-			} else {
-				p.pluckers[i].activeI = 0
-				p.pluckers[i].deactiveI = 0
-			}
-		}
-
-		// look for finisher
-		if p.pluckers[i].finisher != nil && len(p.pluckers[i].captured) > 0 {
-			if curByte == p.pluckers[i].finisher[p.pluckers[i].finisherI] {
-				p.pluckers[i].finisherI++
-				if p.pluckers[i].finisherI == len(p.pluckers[i].finisher) {
-					log.Info(string(curByte), "Finished")
-					p.pluckers[i].isFinished = true
-				}
-			} else {
-				p.pluckers[i].finisherI = 0
-			}
-		}
-
-		if len(p.pluckers[i].captured) == p.pluckers[i].config.Limit {
-			p.pluckers[i].isFinished = true
-		}
-		if p.pluckers[i].isFinished {
-			break
-		}
-	}
-	log.Infof("plucker %d finished", i)
-}
-
 // Pluck takes a buffered reader stream and
 // extracts the text from it. This spawns a thread for
 // each plucker and copies the entire buffer to memory,
@@ -377,7 +248,9 @@ func (p *Plucker) Pluck(r *bufio.Reader) (err error) {
 								tempByte = []byte(striphtml.StripTags(html.UnescapeString(string(tempByte))))
 							}
 							tempByte = bytes.TrimSpace(tempByte)
-							p.pluckers[i].captured = append(p.pluckers[i].captured, tempByte)
+							if p.pluckers[i].maximum < 1 || len(tempByte) < p.pluckers[i].maximum {
+								p.pluckers[i].captured = append(p.pluckers[i].captured, tempByte)
+							}
 							// reset
 							p.pluckers[i].numActivated = p.pluckers[i].permanent
 							p.pluckers[i].deactiveI = 0

@@ -218,18 +218,19 @@ func TestPluckCutSection(t *testing.T) {
 		Permanent:   1,
 		Deactivator: `"`,
 		Finisher:    "Section 3",
+		Maximum:     6,
 	})
 	err = p.PluckString(`<h1>Section 1</h1>
 <a href="link1">1</a>
 <a href="link2">2</a>
 <h1>Section 2</h1>
 <a href="link3">3</a>
-<a href="link4">4</a>
+<a href="link4 but this link is too long">4</a>
 <h1>Section 3</h1>
 <a href="link5">5</a>
 <a href="link6">6</a>`)
 	assert.Nil(t, err)
-	assert.Equal(t, `{"0":["link3","link4"]}`, p.ResultJSON())
+	assert.Equal(t, `{"0":"link3"}`, p.ResultJSON())
 
 	assert.Equal(t, []Config{Config{
 		Activators:  []string{"Section 2", "a", "href", `"`},
@@ -238,5 +239,6 @@ func TestPluckCutSection(t *testing.T) {
 		Finisher:    "Section 3",
 		Limit:       -1,
 		Name:        "0",
+		Maximum:     6,
 	}}, p.Configuration())
 }
