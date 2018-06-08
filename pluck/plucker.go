@@ -375,7 +375,9 @@ func (p *Plucker) PluckStream(r *bufio.Reader) (err error) {
 func (p *Plucker) generateResult() {
 	p.result = make(map[string]interface{})
 	for i := range p.pluckers {
-		if len(p.pluckers[i].captured) == 1 {
+		if len(p.pluckers[i].captured) == 0 {
+			p.result[p.pluckers[i].config.Name] = ""
+		} else if len(p.pluckers[i].captured) == 1 {
 			p.result[p.pluckers[i].config.Name] = string(p.pluckers[i].captured[0])
 		} else {
 			results := make([]string, len(p.pluckers[i].captured))
