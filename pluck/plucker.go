@@ -382,7 +382,11 @@ func (p *Plucker) generateResult() {
 			for j, r := range p.pluckers[i].captured {
 				results[j] = string(r)
 			}
-			p.result[p.pluckers[i].config.Name] = results
+			if len(results) == 0 {
+				p.result[p.pluckers[i].config.Name] = ""
+			} else {
+				p.result[p.pluckers[i].config.Name] = results
+			}
 		}
 	}
 }
