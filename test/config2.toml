@@ -1,0 +1,17 @@
+[[pluck]]
+activators = ["<title>"]
+deactivator = "</title>"
+
+[[pluck]]
+activators = ["""<option class="level-0" """,">"]
+deactivator = "<"
+limit = 3
+name = "options"
+
+[[pluck]]
+activators = ["<span>Song of the Day",">Song of the Day: "]
+permanent = 1
+deactivator = "<"
+finisher = ">Song of the Day: Les Big Byrd"
+name = "songs"
+limit = -1

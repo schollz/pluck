@@ -1,0 +1,8 @@
+[[pluck]]
+activators = ["<h2>Similar Tracks</h2>","grid-items-item-main-text","<a",'href="']
+permanent = 1
+deactivator = '"'
+finisher = "<h2>Similar Artists</h2>"
+name = "songs"
+limit = -1
+

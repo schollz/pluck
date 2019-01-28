@@ -95,7 +95,7 @@ deactivator = "</title>"
 
 [[pluck]]
 name = "ingredients"
-activators = ["<label","Ingredient",">"]
+activators = ["<","Ingredients","Ingredient",">"]
 deactivator = "<"
 limit = -1
 ```
@@ -171,7 +171,7 @@ See [EXAMPLES.md](https://github.com/schollz/pluck/blob/master/EXAMPLES.md) for 
 
 ### Use as a Go package
 
-Import pluck as `"github.com/schollz/pluck/pluck"` and you can use it in your own project. See the tests for more info.
+Import pluck as `"github.com/schollz/pluck"` and you can use it in your own project. See the tests for more info.
 
 
 

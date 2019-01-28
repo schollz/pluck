@@ -1,0 +1,645 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en-US" prefix="og: http://ogp.me/ns#">
+<head profile="http://gmpg.org/xfn/11">
+	<title>Category Archives: Song of the Day Podcast</title>
+
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+
+	<meta name="robots" content="noindex,follow" />
+
+	<link rel="stylesheet" type="text/css" href="http://blog.kexp.org/wp-content/themes/kexpectic/style.css" />
+
+	<link rel="pingback" href="http://blog.kexp.org/xmlrpc.php" />
+
+<link rel="alternate" type="application/rss+xml" title="The KEXP Blog &raquo; Feed" href="http://blog.kexp.org/feed/" />
+<link rel="alternate" type="application/rss+xml" title="The KEXP Blog &raquo; Comments Feed" href="http://blog.kexp.org/comments/feed/" />
+<link rel="alternate" type="application/rss+xml" title="The KEXP Blog &raquo; Song of the Day Podcast Category Feed" href="http://blog.kexp.org/category/song-of-the-day-podcast/feed/" />
+<link rel='stylesheet' id='msw_wpfm_scan-css'  href='http://blog.kexp.org/wp-content/plugins/wordpress-file-monitor/wordpress-file-monitor.php?ver=scan' type='text/css' media='all' />
+<!-- This site uses the Google Analytics by Yoast plugin v5.4.5 - Universal enabled - https://yoast.com/wordpress/plugins/google-analytics/ -->
+<script type="text/javascript">
+	(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+		(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+		m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+	})(window,document,'script','//www.google-analytics.com/analytics.js','__gaTracker');
+
+	__gaTracker('create', 'UA-1975883-2', 'auto');
+	__gaTracker('set', 'forceSSL', true);
+	__gaTracker('send','pageview');
+
+</script>
+<!-- / Google Analytics by Yoast -->
+<script type='text/javascript' src='http://blog.kexp.org/wp-includes/js/jquery/jquery.js?ver=1.11.1'></script>
+<script type='text/javascript' src='http://blog.kexp.org/wp-includes/js/jquery/jquery-migrate.min.js?ver=1.2.1'></script>
+<script type='text/javascript' src='http://blog.kexp.org/wp-content/plugins/advanced-iframe/js/ai.js?ver=952962'></script>
+<script type='text/javascript' src='http://blog.kexp.org/wp-content/plugins/vslider/js/vslider.js?ver=4.0.1'></script>
+<link rel="EditURI" type="application/rsd+xml" title="RSD" href="http://blog.kexp.org/xmlrpc.php?rsd" />
+<link rel="wlwmanifest" type="application/wlwmanifest+xml" href="http://blog.kexp.org/wp-includes/wlwmanifest.xml" /> 
+
+<script type="text/javascript" src="http://blog.kexp.org/wp-content/plugins/audio-player/assets/audio-player.js?ver=2.0.4.1"></script>
+<script type="text/javascript">AudioPlayer.setup("http://blog.kexp.org/wp-content/plugins/audio-player/assets/player.swf?ver=2.0.4.1", {width:"290",animation:"yes",encode:"yes",initialvolume:"80",remaining:"no",noinfo:"no",buffer:"5",checkpolicy:"no",rtl:"no",bg:"f8f8f8",text:"666666",leftbg:"eeeeee",lefticon:"666666",volslider:"666666",voltrack:"FFFFFF",rightbg:"cccccc",rightbghover:"999999",righticon:"666666",righticonhover:"ffffff",track:"FFFFFF",loader:"9FFFB8",border:"666666",tracker:"DDDDDD",skip:"666666",pagebg:"FFFFFF",transparentpagebg:"yes"});</script>
+
+	<script type="text/javascript" src="http://blog.kexp.org/wp-content/themes/thematic/library/scripts/hoverIntent.js"></script>
+	<script type="text/javascript" src="http://blog.kexp.org/wp-content/themes/thematic/library/scripts/superfish.js"></script>
+	<script type="text/javascript" src="http://blog.kexp.org/wp-content/themes/thematic/library/scripts/supersubs.js"></script>
+	<script type="text/javascript" src="http://blog.kexp.org/wp-content/themes/thematic/library/scripts/thematic-dropdowns.js"></script>
+
+	<script type="text/javascript">
+		/*<![CDATA[*/
+		jQuery.noConflict();
+		/*]]>*/
+	</script>
+
+<!-- WordPress Facebook Open Graph protocol plugin (WPFBOGP v2.0.13) http://rynoweb.com/wordpress-plugins/ -->
+<meta property="fb:app_id" content="124267624559"/>
+<meta property="og:url" content="http://blog.kexp.org/category/song-of-the-day-podcast/"/>
+<meta property="og:title" content="Song of the Day: Juana Molina &#8211; Cosoco"/>
+<meta property="og:site_name" content="The KEXP Blog"/>
+<meta property="og:description" content="where the music matters"/>
+<meta property="og:type" content="website"/>
+<meta property="og:image" content="http://blog.kexp.org/files/2014/02/kexp-official-logo-200.jpg"/>
+<meta property="og:locale" content="en_us"/>
+<!-- // end wpfbogp -->
+<script type="text/javascript">(function() {var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;ga.src = '//stream.publicbroadcasting.net/analytics/ab99.js';var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);})();</script>
+<script type='text/javascript'>
+var googletag = googletag || {};
+googletag.cmd = googletag.cmd || [];
+(function() {
+var gads = document.createElement('script');
+gads.async = true;
+gads.type = 'text/javascript';
+var useSSL = 'https:' == document.location.protocol;
+gads.src = (useSSL ? 'https:' : 'http:') + 
+'//www.googletagservices.com/tag/js/gpt.js';
+var node = document.getElementsByTagName('script')[0];
+node.parentNode.insertBefore(gads, node);
+})();
+</script>
+
+<script type='text/javascript'>
+googletag.cmd.push(function() {
+googletag.defineSlot('/10628240/Medium_Rectangle_Blog_300x250', [300, 250], 'div-gpt-ad-1351061319759-0').addService(googletag.pubads());
+googletag.defineSlot('/10628240/Leaderboard_Blog_728x90', [728, 90], 'div-gpt-ad-1351061405777-0').addService(googletag.pubads());
+googletag.defineSlot('/10628240/Medium_Rectangle_Getting-Airplay_300x250', [300, 250], 'div-gpt-ad-1396391573031-0').addService(googletag.pubads());
+googletag.defineSlot('/10628240/Leaderboard_Getting-Airplay_728x90', [728, 90], 'div-gpt-ad-1396391251005-0').addService(googletag.pubads());
+    googletag.defineSlot('/10628240/Leaderboard_Running-Club_728x90', [728, 90], 'div-gpt-ad-1430864128222-0').addService(googletag.pubads());
+    googletag.defineSlot('/10628240/Medium_Rectangle_Running-Club_300x250', [300, 250], 'div-gpt-ad-1430864128222-1').addService(googletag.pubads());
+googletag.pubads().enableSingleRequest();
+googletag.enableServices();
+});
+</script>
+
+
+</head>
+
+<body class="archive category category-song-of-the-day-podcast category-8 windows chrome ch">
+
+<div id="wrapper" class="hfeed">   
+
+    <div id="header">
+    
+        <div id="branding">
+	<span id="mainlogo"><a href="http://blog.kexp.org/"
+        title="The KEXP Blog" rel="home"><img src="/images/KEXP_Logo_Horiz.png"
+        alt="KEXP_Logo_Horiz.png"
+        title="KEXP_Logo_Horiz.png" /></a></span>
+		<div id="blog-description">where the music matters</div>
+
+        <div id="headerad"><img id="sponsoredtop" alt="Sponsored By" style="float: right;" src="/images/sponsoredby-sm.gif" /><!-- Leaderboard_Blog_728x90 -->
+<div id='div-gpt-ad-1351061405777-0' style='width:728px; height:90px;float:left;'>
+<script type='text/javascript'>
+googletag.cmd.push(function() { googletag.display('div-gpt-ad-1351061405777-0'); });
+</script>
+</div></div><!-- #headerad -->
+                </div><!--  #branding -->
+	
+	</div><!-- #header-->
+       
+    <div id="main">
+    
+
+		<div id="container">
+		
+					
+			<div id="content">
+	
+	            <h1 class="page-title">Category Archives: <span>Song of the Day Podcast</span></h1>
+<div class="archive-meta"></div>
+
+				<div id="nav-above" class="navigation">
+               		  
+					<div class="nav-previous"><a href="http://blog.kexp.org/category/song-of-the-day-podcast/page/2/" ><span class="meta-nav">&laquo;</span> Older posts</a></div>
+					<div class="nav-next"></div>
+										
+				</div>	
+	
+	
+				<div id="post-185348" class="post-185348 post type-post status-publish format-standard hentry category-cheryl-waters category-kexp category-song-of-the-day-podcast tag-juana-molina"><h2 class="entry-title"><a href="http://blog.kexp.org/2017/07/31/song-of-the-day-juana-molina-cosoco/" title="Permalink to Song of the Day: Juana Molina &#8211; Cosoco" rel="bookmark">Song of the Day: Juana Molina &#8211; Cosoco</a></h2>
+<div class="entry-meta"><span class="meta-prep meta-prep-author">By </span><span class="author vcard"><a class="url fn n" href="http://blog.kexp.org/author/mhowland/" title="View all posts by Matthew Howland">Matthew Howland</a></span><span class="meta-sep meta-sep-entry-date"> | </span><span class="meta-prep meta-prep-entry-date">Published: </span><span class="entry-date"><abbr class="published" title="2017-07-31T07:00:43-0700">July 31, 2017</abbr></span></div><!-- .entry-meta -->
+					<div class="entry-content">
+<p>Every Monday through Friday, we deliver a different song as part of our Song of the Day podcast subscription. This podcast features exclusive KEXP in-studio performances, unreleased songs, and recordings from independent artists that our DJ’s think you should hear. Today’s song, featured on The Midday Show with Cheryl Waters, is “Cosoco” by Juana Molina<a href="http://blog.kexp.org/2017/07/31/song-of-the-day-juana-molina-cosoco/"><span class="moretext">Read more&#8230;</span></a></p>
+	
+					</div><!-- .entry-content -->
+					<div class="entry-utility"><span class="cat-links">Also posted in <a href="http://blog.kexp.org/category/cheryl-waters/" rel="category tag">Cheryl Waters</a>, <a href="http://blog.kexp.org/category/kexp/" rel="category tag">KEXP</a></span> <span class="meta-sep meta-sep-tag-links">|</span><span class="tag-links"> Tagged <a href="http://blog.kexp.org/tag/juana-molina/" rel="tag">Juana Molina</a></span> <span class="meta-sep meta-sep-comments-link">|</span> <span class="comments-link"><a href="http://blog.kexp.org/2017/07/31/song-of-the-day-juana-molina-cosoco/#comments" title="Comment on Song of the Day: Juana Molina &#8211; Cosoco">1 Comment</a></span></div><!-- .entry-utility -->
+				</div><!-- #post -->
+
+				
+				<div id="post-185212" class="post-185212 post type-post status-publish format-standard hentry category-kexp category-local-music category-song-of-the-day-podcast tag-charms"><h2 class="entry-title"><a href="http://blog.kexp.org/2017/07/28/song-of-the-day-charms-siren/" title="Permalink to Song of the Day: Charms – Siren" rel="bookmark">Song of the Day: Charms – Siren</a></h2>
+<div class="entry-meta"><span class="meta-prep meta-prep-author">By </span><span class="author vcard"><a class="url fn n" href="http://blog.kexp.org/author/dustyhenry/" title="View all posts by Dusty Henry">Dusty Henry</a></span><span class="meta-sep meta-sep-entry-date"> | </span><span class="meta-prep meta-prep-entry-date">Published: </span><span class="entry-date"><abbr class="published" title="2017-07-28T07:00:08-0700">July 28, 2017</abbr></span></div><!-- .entry-meta -->
+					<div class="entry-content">
+<p>Every Monday through Friday, we deliver a different song as part of our Song of the Day podcast subscription. This podcast features exclusive KEXP in-studio performances, unreleased songs, and recordings from independent artists that our DJ’s think you should hear. Today’s song, featured on The Morning Show with John Richards, is &#8220;Siren&#8221; by Charms from<a href="http://blog.kexp.org/2017/07/28/song-of-the-day-charms-siren/"><span class="moretext">Read more&#8230;</span></a></p>
+	
+					</div><!-- .entry-content -->
+					<div class="entry-utility"><span class="cat-links">Also posted in <a href="http://blog.kexp.org/category/kexp/" rel="category tag">KEXP</a>, <a href="http://blog.kexp.org/category/local-music/" rel="category tag">Local Music</a></span> <span class="meta-sep meta-sep-tag-links">|</span><span class="tag-links"> Tagged <a href="http://blog.kexp.org/tag/charms/" rel="tag">Charms</a></span> <span class="meta-sep meta-sep-comments-link">|</span> <span class="comments-link"><a href="http://blog.kexp.org/2017/07/28/song-of-the-day-charms-siren/#comments" title="Comment on Song of the Day: Charms – Siren">Leave a comment</a></span></div><!-- .entry-utility -->
+				</div><!-- #post -->
+
+				
+				<div id="post-185128" class="post-185128 post type-post status-publish format-standard hentry category-john-in-the-morning category-kexp category-song-of-the-day-podcast tag-daddy-issues"><h2 class="entry-title"><a href="http://blog.kexp.org/2017/07/27/song-of-the-day-daddy-issues-locked-out/" title="Permalink to Song of the Day: Daddy Issues &#8211; Locked Out" rel="bookmark">Song of the Day: Daddy Issues &#8211; Locked Out</a></h2>
+<div class="entry-meta"><span class="meta-prep meta-prep-author">By </span><span class="author vcard"><a class="url fn n" href="http://blog.kexp.org/author/annakaplan/" title="View all posts by Anna Kaplan">Anna Kaplan</a></span><span class="meta-sep meta-sep-entry-date"> | </span><span class="meta-prep meta-prep-entry-date">Published: </span><span class="entry-date"><abbr class="published" title="2017-07-27T06:00:14-0700">July 27, 2017</abbr></span></div><!-- .entry-meta -->
+					<div class="entry-content">
+<p>Every Monday through Friday, we deliver a different song as part of our Song of the day podcast subscription. This podcast features exclusive KEXP in-studio performances, unreleased songs, and recordings from independent artists that our DJ’s think you should hear. Today’s song, featured on The Morning Show with John Richards, is “Locked Out” by Daddy Issues from<a href="http://blog.kexp.org/2017/07/27/song-of-the-day-daddy-issues-locked-out/"><span class="moretext">Read more&#8230;</span></a></p>
+	
+					</div><!-- .entry-content -->
+					<div class="entry-utility"><span class="cat-links">Also posted in <a href="http://blog.kexp.org/category/john-in-the-morning/" rel="category tag">John In The Morning</a>, <a href="http://blog.kexp.org/category/kexp/" rel="category tag">KEXP</a></span> <span class="meta-sep meta-sep-tag-links">|</span><span class="tag-links"> Tagged <a href="http://blog.kexp.org/tag/daddy-issues/" rel="tag">Daddy Issues</a></span> <span class="meta-sep meta-sep-comments-link">|</span> <span class="comments-link"><a href="http://blog.kexp.org/2017/07/27/song-of-the-day-daddy-issues-locked-out/#comments" title="Comment on Song of the Day: Daddy Issues &#8211; Locked Out">Leave a comment</a></span></div><!-- .entry-utility -->
+				</div><!-- #post -->
+
+				
+				<div id="post-185051" class="post-185051 post type-post status-publish format-standard hentry category-john-in-the-morning category-kexp category-song-of-the-day-podcast tag-cloud-control"><h2 class="entry-title"><a href="http://blog.kexp.org/2017/07/26/song-of-the-day-cloud-control-rainbow-city/" title="Permalink to Song of the Day: Cloud Control &#8211; Rainbow City" rel="bookmark">Song of the Day: Cloud Control &#8211; Rainbow City</a></h2>
+<div class="entry-meta"><span class="meta-prep meta-prep-author">By </span><span class="author vcard"><a class="url fn n" href="http://blog.kexp.org/author/micahfrederick/" title="View all posts by Micah Frederick">Micah Frederick</a></span><span class="meta-sep meta-sep-entry-date"> | </span><span class="meta-prep meta-prep-entry-date">Published: </span><span class="entry-date"><abbr class="published" title="2017-07-26T06:00:32-0700">July 26, 2017</abbr></span></div><!-- .entry-meta -->
+					<div class="entry-content">
+<p>Every Monday through Friday, we deliver a different song as part of our Song of the day podcast subscription. This podcast features exclusive KEXP in-studio performances, unreleased songs, and recordings from independent artists that our DJ’s think you should hear. Today’s song, featured on The Morning Show with John Richards, is &#8220;Rainbow City&#8221; by Cloud Control<a href="http://blog.kexp.org/2017/07/26/song-of-the-day-cloud-control-rainbow-city/"><span class="moretext">Read more&#8230;</span></a></p>
+	
+					</div><!-- .entry-content -->
+					<div class="entry-utility"><span class="cat-links">Also posted in <a href="http://blog.kexp.org/category/john-in-the-morning/" rel="category tag">John In The Morning</a>, <a href="http://blog.kexp.org/category/kexp/" rel="category tag">KEXP</a></span> <span class="meta-sep meta-sep-tag-links">|</span><span class="tag-links"> Tagged <a href="http://blog.kexp.org/tag/cloud-control/" rel="tag">Cloud Control</a></span> <span class="meta-sep meta-sep-comments-link">|</span> <span class="comments-link"><a href="http://blog.kexp.org/2017/07/26/song-of-the-day-cloud-control-rainbow-city/#comments" title="Comment on Song of the Day: Cloud Control &#8211; Rainbow City">Leave a comment</a></span></div><!-- .entry-utility -->
+				</div><!-- #post -->
+
+				
+				<div id="post-184993" class="post-184993 post type-post status-publish format-standard hentry category-kexp category-song-of-the-day-podcast tag-kevin-morby"><h2 class="entry-title"><a href="http://blog.kexp.org/2017/07/25/song-of-the-day-kevin-morby-come-to-me-now/" title="Permalink to Song of the Day: Kevin Morby &#8211; Come to Me Now" rel="bookmark">Song of the Day: Kevin Morby &#8211; Come to Me Now</a></h2>
+<div class="entry-meta"><span class="meta-prep meta-prep-author">By </span><span class="author vcard"><a class="url fn n" href="http://blog.kexp.org/author/mhowland/" title="View all posts by Matthew Howland">Matthew Howland</a></span><span class="meta-sep meta-sep-entry-date"> | </span><span class="meta-prep meta-prep-entry-date">Published: </span><span class="entry-date"><abbr class="published" title="2017-07-25T06:27:21-0700">July 25, 2017</abbr></span></div><!-- .entry-meta -->
+					<div class="entry-content">
+<p>Every Monday through Friday, we deliver a different song as part of our Song of the day podcast subscription. This podcast features exclusive KEXP in-studio performances, unreleased songs, and recordings from independent artists that our DJ’s think you should hear. Today’s song, featured on The Morning Show with John Richards, is &#8220;Come to Me Now,&#8221; by<a href="http://blog.kexp.org/2017/07/25/song-of-the-day-kevin-morby-come-to-me-now/"><span class="moretext">Read more&#8230;</span></a></p>
+	
+					</div><!-- .entry-content -->
+					<div class="entry-utility"><span class="cat-links">Also posted in <a href="http://blog.kexp.org/category/kexp/" rel="category tag">KEXP</a></span> <span class="meta-sep meta-sep-tag-links">|</span><span class="tag-links"> Tagged <a href="http://blog.kexp.org/tag/kevin-morby/" rel="tag">Kevin Morby</a></span> <span class="meta-sep meta-sep-comments-link">|</span> <span class="comments-link"><a href="http://blog.kexp.org/2017/07/25/song-of-the-day-kevin-morby-come-to-me-now/#comments" title="Comment on Song of the Day: Kevin Morby &#8211; Come to Me Now">Leave a comment</a></span></div><!-- .entry-utility -->
+				</div><!-- #post -->
+
+				
+				<div id="post-184907" class="post-184907 post type-post status-publish format-standard hentry category-john-in-the-morning category-kexp category-song-of-the-day-podcast tag-les-big-byrd"><h2 class="entry-title"><a href="http://blog.kexp.org/2017/07/24/song-of-the-day-les-big-byrd-two-man-gang/" title="Permalink to Song of the Day: Les Big Byrd &#8211; Two Man Gang" rel="bookmark">Song of the Day: Les Big Byrd &#8211; Two Man Gang</a></h2>
+<div class="entry-meta"><span class="meta-prep meta-prep-author">By </span><span class="author vcard"><a class="url fn n" href="http://blog.kexp.org/author/janice/" title="View all posts by Janice Headley">Janice Headley</a></span><span class="meta-sep meta-sep-entry-date"> | </span><span class="meta-prep meta-prep-entry-date">Published: </span><span class="entry-date"><abbr class="published" title="2017-07-24T07:00:00-0700">July 24, 2017</abbr></span></div><!-- .entry-meta -->
+					<div class="entry-content">
+<p>Every Monday through Friday, we deliver a different song as part of our Song of the day podcast subscription. This podcast features exclusive KEXP in-studio performances, unreleased songs, and recordings from independent artists that our DJ’s think you should hear. Today’s song, featured on The Morning Show with John Richards, is “Two Man Gang” by Les<a href="http://blog.kexp.org/2017/07/24/song-of-the-day-les-big-byrd-two-man-gang/"><span class="moretext">Read more&#8230;</span></a></p>
+	
+					</div><!-- .entry-content -->
+					<div class="entry-utility"><span class="cat-links">Also posted in <a href="http://blog.kexp.org/category/john-in-the-morning/" rel="category tag">John In The Morning</a>, <a href="http://blog.kexp.org/category/kexp/" rel="category tag">KEXP</a></span> <span class="meta-sep meta-sep-tag-links">|</span><span class="tag-links"> Tagged <a href="http://blog.kexp.org/tag/les-big-byrd/" rel="tag">Les Big Byrd</a></span> <span class="meta-sep meta-sep-comments-link">|</span> <span class="comments-link"><a href="http://blog.kexp.org/2017/07/24/song-of-the-day-les-big-byrd-two-man-gang/#comments" title="Comment on Song of the Day: Les Big Byrd &#8211; Two Man Gang">Leave a comment</a></span></div><!-- .entry-utility -->
+				</div><!-- #post -->
+
+				
+				<div id="post-184787" class="post-184787 post type-post status-publish format-standard hentry category-kexp category-local-music category-song-of-the-day-podcast tag-thunderpussy"><h2 class="entry-title"><a href="http://blog.kexp.org/2017/07/21/song-of-the-day-thunderpussy-velvet-noose/" title="Permalink to Song of the Day: Thunderpussy – Velvet Noose" rel="bookmark">Song of the Day: Thunderpussy – Velvet Noose</a></h2>
+<div class="entry-meta"><span class="meta-prep meta-prep-author">By </span><span class="author vcard"><a class="url fn n" href="http://blog.kexp.org/author/dustyhenry/" title="View all posts by Dusty Henry">Dusty Henry</a></span><span class="meta-sep meta-sep-entry-date"> | </span><span class="meta-prep meta-prep-entry-date">Published: </span><span class="entry-date"><abbr class="published" title="2017-07-21T07:00:48-0700">July 21, 2017</abbr></span></div><!-- .entry-meta -->
+					<div class="entry-content">
+<p>Every Monday through Friday, we deliver a different song as part of our Song of the day podcast subscription. This podcast features exclusive KEXP in-studio performances, unreleased songs, and recordings from independent artists that our DJ’s think you should hear. Today’s song, featured on The Afternoon Show with Kevin Cole, is “Velvet Noose” by Seattle rock outfit<a href="http://blog.kexp.org/2017/07/21/song-of-the-day-thunderpussy-velvet-noose/"><span class="moretext">Read more&#8230;</span></a></p>
+	
+					</div><!-- .entry-content -->
+					<div class="entry-utility"><span class="cat-links">Also posted in <a href="http://blog.kexp.org/category/kexp/" rel="category tag">KEXP</a>, <a href="http://blog.kexp.org/category/local-music/" rel="category tag">Local Music</a></span> <span class="meta-sep meta-sep-tag-links">|</span><span class="tag-links"> Tagged <a href="http://blog.kexp.org/tag/thunderpussy/" rel="tag">Thunderpussy</a></span> <span class="meta-sep meta-sep-comments-link">|</span> <span class="comments-link"><a href="http://blog.kexp.org/2017/07/21/song-of-the-day-thunderpussy-velvet-noose/#comments" title="Comment on Song of the Day: Thunderpussy – Velvet Noose">Leave a comment</a></span></div><!-- .entry-utility -->
+				</div><!-- #post -->
+
+				
+				<div id="post-184656" class="post-184656 post type-post status-publish format-standard hentry category-kevin-cole category-kexp category-song-of-the-day-podcast tag-captain-were-sinking"><h2 class="entry-title"><a href="http://blog.kexp.org/2017/07/20/song-of-the-day-captain-were-sinking-trying-year/" title="Permalink to Song of the Day: Captain, We&#8217;re Sinking &#8211; Trying Year" rel="bookmark">Song of the Day: Captain, We&#8217;re Sinking &#8211; Trying Year</a></h2>
+<div class="entry-meta"><span class="meta-prep meta-prep-author">By </span><span class="author vcard"><a class="url fn n" href="http://blog.kexp.org/author/janice/" title="View all posts by Janice Headley">Janice Headley</a></span><span class="meta-sep meta-sep-entry-date"> | </span><span class="meta-prep meta-prep-entry-date">Published: </span><span class="entry-date"><abbr class="published" title="2017-07-20T07:00:26-0700">July 20, 2017</abbr></span></div><!-- .entry-meta -->
+					<div class="entry-content">
+<p>Every Monday through Friday, we deliver a different song as part of our Song of the day podcast subscription. This podcast features exclusive KEXP in-studio performances, unreleased songs, and recordings from independent artists that our DJ’s think you should hear. Today’s song, featured on The Afternoon Show with Kevin Cole, is “Trying Year” by Captain, We&#8217;re<a href="http://blog.kexp.org/2017/07/20/song-of-the-day-captain-were-sinking-trying-year/"><span class="moretext">Read more&#8230;</span></a></p>
+	
+					</div><!-- .entry-content -->
+					<div class="entry-utility"><span class="cat-links">Also posted in <a href="http://blog.kexp.org/category/kevin-cole/" rel="category tag">Kevin Cole</a>, <a href="http://blog.kexp.org/category/kexp/" rel="category tag">KEXP</a></span> <span class="meta-sep meta-sep-tag-links">|</span><span class="tag-links"> Tagged <a href="http://blog.kexp.org/tag/captain-were-sinking/" rel="tag">Captain We're Sinking</a></span> <span class="meta-sep meta-sep-comments-link">|</span> <span class="comments-link"><a href="http://blog.kexp.org/2017/07/20/song-of-the-day-captain-were-sinking-trying-year/#comments" title="Comment on Song of the Day: Captain, We&#8217;re Sinking &#8211; Trying Year">Leave a comment</a></span></div><!-- .entry-utility -->
+				</div><!-- #post -->
+
+				
+				<div id="post-184479" class="post-184479 post type-post status-publish format-standard hentry category-kevin-cole category-kexp category-song-of-the-day-podcast tag-mammut"><h2 class="entry-title"><a href="http://blog.kexp.org/2017/07/19/song-of-the-day-mammut-the-moon-will-never-turn-on-me/" title="Permalink to Song of the Day: Mammút – “The Moon Will Never Turn On Me”" rel="bookmark">Song of the Day: Mammút – “The Moon Will Never Turn On Me”</a></h2>
+<div class="entry-meta"><span class="meta-prep meta-prep-author">By </span><span class="author vcard"><a class="url fn n" href="http://blog.kexp.org/author/cierra/" title="View all posts by Cierra Fraser">Cierra Fraser</a></span><span class="meta-sep meta-sep-entry-date"> | </span><span class="meta-prep meta-prep-entry-date">Published: </span><span class="entry-date"><abbr class="published" title="2017-07-19T07:00:32-0700">July 19, 2017</abbr></span></div><!-- .entry-meta -->
+					<div class="entry-content">
+<p>Every Monday through Friday, we deliver a different song as part of our Song of the Day podcast subscription. This podcast features exclusive KEXP in-studio performances, unreleased songs, and recordings from independent artists that our DJ’s think you should hear. Today’s song, featured on The Afternoon Show with Kevin Cole, is “The Moon Will Never<a href="http://blog.kexp.org/2017/07/19/song-of-the-day-mammut-the-moon-will-never-turn-on-me/"><span class="moretext">Read more&#8230;</span></a></p>
+	
+					</div><!-- .entry-content -->
+					<div class="entry-utility"><span class="cat-links">Also posted in <a href="http://blog.kexp.org/category/kevin-cole/" rel="category tag">Kevin Cole</a>, <a href="http://blog.kexp.org/category/kexp/" rel="category tag">KEXP</a></span> <span class="meta-sep meta-sep-tag-links">|</span><span class="tag-links"> Tagged <a href="http://blog.kexp.org/tag/mammut/" rel="tag">Mammut</a></span> <span class="meta-sep meta-sep-comments-link">|</span> <span class="comments-link comments-closed-link">Comments closed</span></div><!-- .entry-utility -->
+				</div><!-- #post -->
+
+				
+				<div id="post-184368" class="post-184368 post type-post status-publish format-standard hentry category-kexp category-song-of-the-day-podcast tag-damon-albarn tag-iggy-pop tag-songhoy-blues tag-yeah-yeah-yeahs"><h2 class="entry-title"><a href="http://blog.kexp.org/2017/07/18/song-of-the-day-songhoy-blues-voter/" title="Permalink to Song of the Day: Songhoy Blues &#8211; Voter" rel="bookmark">Song of the Day: Songhoy Blues &#8211; Voter</a></h2>
+<div class="entry-meta"><span class="meta-prep meta-prep-author">By </span><span class="author vcard"><a class="url fn n" href="http://blog.kexp.org/author/gabepollak/" title="View all posts by Gabe Pollak">Gabe Pollak</a></span><span class="meta-sep meta-sep-entry-date"> | </span><span class="meta-prep meta-prep-entry-date">Published: </span><span class="entry-date"><abbr class="published" title="2017-07-18T07:00:48-0700">July 18, 2017</abbr></span></div><!-- .entry-meta -->
+					<div class="entry-content">
+<p>Every Monday through Friday, we deliver a different song as part of our Song of the day podcast subscription. This podcast features exclusive KEXP in-studio performances, unreleased songs, and recordings from independent artists that our DJ’s think you should hear. Today’s song, featured on The Afternoon Show with Kevin Cole, is “Voter” by Songhoy Blues from Résistance, out now<a href="http://blog.kexp.org/2017/07/18/song-of-the-day-songhoy-blues-voter/"><span class="moretext">Read more&#8230;</span></a></p>
+	
+					</div><!-- .entry-content -->
+					<div class="entry-utility"><span class="cat-links">Also posted in <a href="http://blog.kexp.org/category/kexp/" rel="category tag">KEXP</a></span> <span class="meta-sep meta-sep-tag-links">|</span><span class="tag-links"> Tagged <a href="http://blog.kexp.org/tag/damon-albarn/" rel="tag">Damon Albarn</a>, <a href="http://blog.kexp.org/tag/iggy-pop/" rel="tag">iggy pop</a>, <a href="http://blog.kexp.org/tag/songhoy-blues/" rel="tag">Songhoy Blues</a>, <a href="http://blog.kexp.org/tag/yeah-yeah-yeahs/" rel="tag">Yeah Yeah Yeahs</a></span> <span class="meta-sep meta-sep-comments-link">|</span> <span class="comments-link"><a href="http://blog.kexp.org/2017/07/18/song-of-the-day-songhoy-blues-voter/#comments" title="Comment on Song of the Day: Songhoy Blues &#8211; Voter">Leave a comment</a></span></div><!-- .entry-utility -->
+				</div><!-- #post -->
+
+			
+			<div id="nav-below" class="navigation">
+                  
+				<div class="nav-previous"><a href="http://blog.kexp.org/category/song-of-the-day-podcast/page/2/" ><span class="meta-nav">&laquo;</span> Older posts</a></div>
+				<div class="nav-next"></div>
+							</div>	
+	
+	
+			</div><!-- #content -->
+			
+			 
+			
+		</div><!-- #container -->
+
+	<div id="primary" class="aside main-aside">
+        <a href="http://kexp.org/donate/" target="_new" onClick="javascript:urchinTracker('/donatelink');" title="Donate Now!"><img
+         src="/images/donatenow-blog.png" border="0" alt="Donate Now!" /></a>
+
+<div class="widgetcontainer" style="margin: 18px 8px 0 8px;background-color: #b6e4f9;">
+<h3 class="widgettitle" style="margin: 0;background-color: #b6e4f9;"></h3>
+<a href="http://kexp.org/donate" target="_blank" title="Donate Now for the 2016 Fall Fundraising Drive!"><img
+ src="/files/2017/05/KEXP_SUMMERLUV2017_120x60.gif" alt="Donate to KEXP Today!" /></a></div>
+
+
+<div class="widgetcontainer" style="margin: 18px 8px 0 8px;background-color: black;text-align:center">
+<h3 class="widgettitle" style="margin: 0;background-color: black;"></h3>
+<a href="http://www.kexp.org/donate" target="_blank" title="Power KEXP Today!"><img
+ src="/files/2015/03/square_139x104.gif" alt="Donate to KEXP Today!" /></a></div> 
+
+
+
+<div id="sub-blog-title">
+  <div class="widgetcontainer" style="padding:0;margin:0;">
+	<div style="padding-left: 6px;">
+     <span id="blog-ny">where the music matters</span><br />
+     <h2 id="blog-name"><a href="http://blog.kexp.org/"
+            title="The KEXP Blog"
+            rel="home">The KEXP Blog</a></h2></div>
+	</div>
+</div>
+ 		<ul class="xoxo">
+
+
+
+
+
+
+
+
+
+
+
+
+
+<li id="text-3" class="widgetcontainer widget_text"><h3 class="widgettitle">Listen Live:</h3>
+			<div class="textwidget"><p><a href="http://live-aacplus-64.kexp.org/kexp64.aac">High Quality AAC+ </a><br />
+Excellent for PC, Mac, iPhones/iPads, Android Devices, tablets, iTunes, Winamp, and VLC. High quality audio, low bandwidth
+</p>
+<p><a href="http://live-mp3-128.kexp.org/listen.pls">MP3 Stream</a><br />
+Best for computers running OSX or Windows with iTunes or the open source VideoLAN Player installed</p>
+</div>
+		</li><li id="text-8" class="widgetcontainer widget_text"><h3 class="widgettitle">KEXP AND THE UW</h3>
+			<div class="textwidget"><a href="http://www.washington.edu" onclick="__gaTracker('send', 'event', 'outbound-widget', 'http://www.washington.edu', '');" target="_new" onClick="javascript:urchinTracker('/offsite/uw')" title="University of Washington"><img src="http://kexp.org/content/images/logos/uw-logo-30x20.gif" 
+					alt="The University of Washington Logo" border="0" style="float: left; padding: 4px 2px 0 0;" /></a>
+					KEXP is an<br />
+affiliate of the<br />
+					<a href="http://www.washington.edu" onclick="__gaTracker('send', 'event', 'outbound-widget', 'http://www.washington.edu', 'University of Washington');" target="_new" title="University of Washington" style="font-size: 11px; font-family: Arial;">University of Washington</a></div>
+		</li><li id="text-5" class="widgetcontainer widget_text"><h3 class="widgettitle">iTunes and KEXP</h3>
+			<div class="textwidget"><div style="width: 128px; text-align: center;"><img src="http://kexp.org/content/images/logos/itunesicon.gif" alt="iTunes Logo" /></div>
+You can now find KEXP under "Eclectic" in iTunes after the demise of the "Public" category, to better represent the diversity of our daytime variety shows and numerous specialty programs.</div>
+		</li><li id="linkcat-10" class="widgetcontainer widget_links"><h3 class="widgettitle">KEXP Suggests</h3>
+
+	<ul class='xoxo blogroll'>
+<li><a href="http://www.alabamashakes.com/" onclick="__gaTracker('send', 'event', 'outbound-widget', 'http://www.alabamashakes.com/', 'Alabama Shakes');" target="_blank">Alabama Shakes</a></li>
+<li><a href="http://www.grimesmusic.com/" onclick="__gaTracker('send', 'event', 'outbound-widget', 'http://www.grimesmusic.com/', 'Grimes');" target="_blank">Grimes</a></li>
+<li><a href="http://www.kulturshock.com/" onclick="__gaTracker('send', 'event', 'outbound-widget', 'http://www.kulturshock.com/', 'Kultur Shock');" title="Kultur Shock Home site ">Kultur Shock</a></li>
+<li><a href="http://www.facebook.com/ofmonstersandmen" onclick="__gaTracker('send', 'event', 'outbound-widget', 'http://www.facebook.com/ofmonstersandmen', 'Of Monsters and Men');" target="_blank">Of Monsters and Men</a></li>
+<li><a href="http://www.spiritualized.com" onclick="__gaTracker('send', 'event', 'outbound-widget', 'http://www.spiritualized.com', 'Spiritualized');" target="_blank">Spiritualized</a></li>
+<li><a href="http://thelumineers.com/" onclick="__gaTracker('send', 'event', 'outbound-widget', 'http://thelumineers.com/', 'The Lumineers');" target="_blank">The Lumineers</a></li>
+
+	</ul>
+</li>
+		</ul>
+	</div><!-- #primary .aside -->
+
+
+	<div id="secondary" class="aside main-aside">
+	<div id="blogsearch">
+	<form action="http://kexp.org/search/search.aspx" method="GET" class="searchform">
+        <label for="q" class="noDisplay">Search:</label>
+            <input type="text" tabindex="1" id="main_kexp_search" 
+ onblur="if(this.value==''){this.value='Search KEXP!';this.style.color='#b3b3b3';}" 
+ onfocus="if(this.value=='Search KEXP!'){this.value='';this.style.color='#000';}else{this.select();this.style.color='#000';}" 
+ maxlength="256" name="q" class="searchfield" value="Search KEXP!" style="color: rgb(179, 179, 179);" />
+            <input type="image" tabindex="2" style="color: rgb(179, 179, 179);" onkeypress="javascript:document.getElementById('gs').submit();" onclick="javascript:document.getElementById('gs').submit();" value="Search" 
+	   src="/images/submit_btn.gif" class="searchbtn" alt="Search" id="main_kexp_search_btn" />
+    <input type="hidden" value="005196529597108582349:fuytrvag5y8" name="cx"/>
+    <input type="hidden" value="google-csbe" name="client"/>
+    <input type="hidden" value="xml_no_dtd" name="output"/>
+    <input type="hidden" value="us" name="gl"/>
+    <input type="hidden" value="20" name="num"/>
+	</form>
+	</div>
+<div id="medium_rectangle"><img src="/blog/wp-content/themes/kexpectic/images/layout/sponsoredby.gif" style="padding-top: 4px; background-color: #fff;" 
+alt="Sponsored By" /><br />
+	<!-- Medium_Rectangle_Blog_300x250 -->
+	<div id='div-gpt-ad-1351061319759-0' style='width:300px; height:250px;'>
+	<script type='text/javascript'>
+	googletag.cmd.push(function() { googletag.display('div-gpt-ad-1351061319759-0'); });
+	</script>
+	</div>
+<a href="http://kexp.org/support/bizsupport.asp" title="Support KEXP"><img 
+style="background-color: #fff; margin: 3px 0 2px;" 
+src="/wp-content/themes/kexpectic/images/layout/sponsor-become.gif" alt="Become a KEXP Sponsor!" /></a>
+</div>		<ul class="xoxo">
+
+
+<li id="search-3" class="widgetcontainer widget_search"><h3 class="widgettitle"><label for="s">Search KEXP Blog</label></h3>
+
+	<form id="searchform" method="get" action="http://blog.kexp.org/">
+		<div>
+			<input id="s" name="s" type="text" value="To search, type and hit enter" onfocus="if (this.value == 'To search, type and hit enter') {this.value = '';}" onblur="if (this.value == '') {this.value = 'To search, type and hit enter';}" size="32" tabindex="1" />
+			<input id="searchsubmit" name="searchsubmit" type="submit" value="Search" tabindex="2" />
+		</div>
+	</form></li><li id="categories-3" class="widgetcontainer widget_categories"><h3 class="widgettitle">KEXP Post Categories</h3>
+<select name='cat' id='cat' class='postform' >
+	<option value='-1'>Select Category</option>
+	<option class="level-0" value="891">2009 Countdown</option>
+	<option class="level-0" value="772571">2010 Countdown</option>
+	<option class="level-0" value="774587">2011 Countdown</option>
+	<option class="level-0" value="777346">2012 Countdown</option>
+	<option class="level-0" value="779191">2013 Countdown</option>
+	<option class="level-0" value="780498">2014 Countdown</option>
+	<option class="level-0" value="781677">2015 Countdown</option>
+	<option class="level-0" value="783004">2016 Countdown</option>
+	<option class="level-0" value="112">33 1/3 Odyssey</option>
+	<option class="level-0" value="1626">Agitated Atmosphere</option>
+	<option class="level-0" value="773420">AIR Residency Series</option>
+	<option class="level-0" value="99">Album Reviews</option>
+	<option class="level-0" value="188">All Ages</option>
+	<option class="level-0" value="5">Audioasis</option>
+	<option class="level-0" value="776678">Audiolympics</option>
+	<option class="level-0" value="145">Ballard Day</option>
+	<option class="level-0" value="103">Behind the Curtain</option>
+	<option class="level-0" value="62">Bumbershoot</option>
+	<option class="level-0" value="90">calendar audioasis</option>
+	<option class="level-0" value="156">Capitol Hill Block Party</option>
+	<option class="level-0" value="776170">Celebrating Independence</option>
+	<option class="level-0" value="3">Cheryl Waters</option>
+	<option class="level-0" value="777117">City Arts</option>
+	<option class="level-0" value="772420">City Arts Festival</option>
+	<option class="level-0" value="772391">CMJ</option>
+	<option class="level-0" value="52">Coming Up</option>
+	<option class="level-0" value="47">Community Partnerships</option>
+	<option class="level-0" value="774672">Concert Previews</option>
+	<option class="level-0" value="679">Concerts at the Mural</option>
+	<option class="level-0" value="43">Dave Allen</option>
+	<option class="level-0" value="887">Decibel Festival</option>
+	<option class="level-0" value="772508">Deserted</option>
+	<option class="level-0" value="60">Did You Know</option>
+	<option class="level-0" value="46354">Discover KEXP.ORG</option>
+	<option class="level-0" value="773390">El Sonido</option>
+	<option class="level-0" value="755">Emerald City Search</option>
+	<option class="level-0" value="1187">Enthusiasms</option>
+	<option class="level-0" value="58">Equalizer</option>
+	<option class="level-0" value="15">Event Spotlight</option>
+	<option class="level-0" value="59">Expansions</option>
+	<option class="level-0" value="773421">Fabulous Sounds of the Pacific Northwest</option>
+	<option class="level-0" value="31">Fall Membership Drive</option>
+	<option class="level-0" value="774950">First Listen</option>
+	<option class="level-0" value="202">Free Music!</option>
+	<option class="level-0" value="148">Friction NYC</option>
+	<option class="level-0" value="49">Friday Nite Spotlight</option>
+	<option class="level-0" value="774694">Friday on My Mind</option>
+	<option class="level-0" value="40">Global Warming</option>
+	<option class="level-0" value="1238">Glossy Or Not</option>
+	<option class="level-0" value="781053">Graphic Nature</option>
+	<option class="level-0" value="100">Haiku Review</option>
+	<option class="level-0" value="55">Headlines</option>
+	<option class="level-0" value="275">Hey Marseilles</option>
+	<option class="level-0" value="516745">Hood to Hood</option>
+	<option class="level-0" value="953">Iceland Airwaves</option>
+	<option class="level-0" value="780806">Immigrant Songs</option>
+	<option class="level-0" value="782128">In Stores Now</option>
+	<option class="level-0" value="91">Intern(al)</option>
+	<option class="level-0" value="102">Interviews</option>
+	<option class="level-1" value="779378">&nbsp;&nbsp;&nbsp;The Song That&#8217;s Shaking Me</option>
+	<option class="level-0" value="34">Jazz Theater</option>
+	<option class="level-0" value="151">JellyNYC</option>
+	<option class="level-0" value="2">John In The Morning</option>
+	<option class="level-0" value="4">Kevin Cole</option>
+	<option class="level-0" value="698">KEXP</option>
+	<option class="level-0" value="158">KEXP BBQ</option>
+	<option class="level-0" value="776569">KEXP Documentaries</option>
+	<option class="level-0" value="779174">KEXP New Home</option>
+	<option class="level-0" value="774919">KEXP Premiere</option>
+	<option class="level-0" value="64">KEXP Presents</option>
+	<option class="level-0" value="778822">KEXP Q&amp;A</option>
+	<option class="level-0" value="51">KEXP Residencies</option>
+	<option class="level-0" value="10">KEXP Suggests</option>
+	<option class="level-0" value="198">KEXP Top Ten</option>
+	<option class="level-0" value="36">KEXP&#8217;s Year in Review</option>
+	<option class="level-0" value="113">KEXP@SXSW</option>
+	<option class="level-0" value="772470">Kids Dance Party</option>
+	<option class="level-0" value="589877">Know Your Subgenres</option>
+	<option class="level-0" value="37">Larry&#8217;s Lounge</option>
+	<option class="level-0" value="24">Life With Kevin</option>
+	<option class="level-0" value="775572">Little Big Show</option>
+	<option class="level-0" value="65">Live @ KEXP Vol. 3</option>
+	<option class="level-0" value="1699">Live Around Town</option>
+	<option class="level-0" value="68">Live at CMJ</option>
+	<option class="level-0" value="772086">Live at KEXP Volume 6</option>
+	<option class="level-0" value="774920">Live at KEXP Volume Eight</option>
+	<option class="level-0" value="777687">Live at KEXP Volume Nine</option>
+	<option class="level-0" value="772985">Live at KEXP Volume Seven</option>
+	<option class="level-0" value="1241">Live at KEXP Volume Six</option>
+	<option class="level-0" value="67">Live in Chicago</option>
+	<option class="level-0" value="336">Live in San Francisco</option>
+	<option class="level-0" value="9">Live Performances</option>
+	<option class="level-0" value="33">Live Performances Podcast</option>
+	<option class="level-0" value="56">Live Reviews</option>
+	<option class="level-0" value="380">Live Video</option>
+	<option class="level-0" value="783504">Local Artist Spotlight</option>
+	<option class="level-0" value="62366">Local Music</option>
+	<option class="level-0" value="773519">Local Music Exchange</option>
+	<option class="level-0" value="783268">Mastering the Hustle</option>
+	<option class="level-0" value="48">Membership</option>
+	<option class="level-0" value="63">MFNW</option>
+	<option class="level-0" value="780779">Midnight In A Perfect World</option>
+	<option class="level-0" value="41">Music News</option>
+	<option class="level-0" value="16">Music That Matters Podcast</option>
+	<option class="level-0" value="17">My Current Obsession</option>
+	<option class="level-0" value="114">New York</option>
+	<option class="level-0" value="21">Nite Life</option>
+	<option class="level-0" value="12">NW Music Spotlight</option>
+	<option class="level-0" value="1659">NXNE</option>
+	<option class="level-0" value="781134">OFF Festival</option>
+	<option class="level-0" value="783488">Oh My Virgin Ears!</option>
+	<option class="level-0" value="22">Online Content</option>
+	<option class="level-0" value="13">Out This Week!</option>
+	<option class="level-0" value="42">PDXplore</option>
+	<option class="level-0" value="6">Phat Beats and Meatloaf</option>
+	<option class="level-0" value="181">Photo Galleries</option>
+	<option class="level-0" value="11">Pick 3</option>
+	<option class="level-0" value="771867">Pickathon</option>
+	<option class="level-0" value="116">Pop Conference</option>
+	<option class="level-0" value="774656">Positive Vibrations</option>
+	<option class="level-0" value="779382">Preachin&#8217; the Blues</option>
+	<option class="level-0" value="28">Quilty 3000</option>
+	<option class="level-0" value="18">Rachel</option>
+	<option class="level-0" value="772544">Record Store Day</option>
+	<option class="level-0" value="66">Review Revue</option>
+	<option class="level-0" value="7">Reviews</option>
+	<option class="level-0" value="27">Riz</option>
+	<option class="level-0" value="97">Rock n&#8217; Roll Pest Control</option>
+	<option class="level-0" value="147">Sasquatch</option>
+	<option class="level-0" value="786">Saturday Afternoon Artist</option>
+	<option class="level-0" value="778589">Scene and Unheard</option>
+	<option class="level-0" value="185">Scribes Sounding Off</option>
+	<option class="level-0" value="993">Seek and Destroy</option>
+	<option class="level-0" value="32">Shake The Shack</option>
+	<option class="level-0" value="146">SIFF</option>
+	<option class="level-0" value="8" selected="selected">Song of the Day Podcast</option>
+	<option class="level-0" value="783495">Songbook</option>
+	<option class="level-0" value="162">Songs for Eating and Drinking</option>
+	<option class="level-0" value="45">Sonic Avalanche</option>
+	<option class="level-0" value="38">Sonic Reducer</option>
+	<option class="level-0" value="773199">Sonic Roundup</option>
+	<option class="level-0" value="1261">Sound and Vision</option>
+	<option class="level-0" value="86">South By Southwest</option>
+	<option class="level-0" value="1369">Spring Pledge Drive</option>
+	<option class="level-0" value="39">Streetsounds</option>
+	<option class="level-0" value="776005">Summer Fundraising Drive</option>
+	<option class="level-0" value="200">Support KEXP</option>
+	<option class="level-0" value="773659">Swinging Doors</option>
+	<option class="level-0" value="108">SXSW</option>
+	<option class="level-0" value="567">The Best Ambiance</option>
+	<option class="level-0" value="1327">The New York Report</option>
+	<option class="level-0" value="14">The Roadhouse</option>
+	<option class="level-0" value="20">Three Imaginary Girls</option>
+	<option class="level-0" value="783878">Throwaway Style</option>
+	<option class="level-0" value="772840">Thursday News Roundup</option>
+	<option class="level-0" value="44">Today in Music</option>
+	<option class="level-0" value="54">Today in NW Music</option>
+	<option class="level-0" value="98">Today on KEXP</option>
+	<option class="level-0" value="101">Top 90.3</option>
+	<option class="level-0" value="1657">Tour Blogs</option>
+	<option class="level-1" value="1658">&nbsp;&nbsp;&nbsp;Hey Marseilles Tour Blog</option>
+	<option class="level-0" value="783072">Trans Musicales</option>
+	<option class="level-0" value="779373">TV Eye</option>
+	<option class="level-0" value="779622">Twin Peaks</option>
+	<option class="level-0" value="772295">Under the Covers</option>
+	<option class="level-0" value="783350">Upstream Music Fest + Summit</option>
+	<option class="level-0" value="61">Video Roundup</option>
+	<option class="level-0" value="26">Webmaster</option>
+	<option class="level-0" value="92">Weird At My School</option>
+	<option class="level-0" value="94">What You Missed</option>
+	<option class="level-0" value="53">What&#8217;s Going On @ KEXP</option>
+	<option class="level-0" value="104">Where The Funny Matters</option>
+	<option class="level-0" value="772839">Why Music Matters</option>
+	<option class="level-0" value="46">Winter Pledge Drive</option>
+	<option class="level-0" value="30">Wo&#8217; Pop</option>
+	<option class="level-0" value="95">Yule Benefit</option>
+</select>
+
+<script type='text/javascript'>
+/* <![CDATA[ */
+	var dropdown = document.getElementById("cat");
+	function onCatChange() {
+		if ( dropdown.options[dropdown.selectedIndex].value > 0 ) {
+			location.href = "http://blog.kexp.org/?cat="+dropdown.options[dropdown.selectedIndex].value;
+		}
+	}
+	dropdown.onchange = onCatChange;
+/* ]]> */
+</script>
+
+</li><li id="linkcat-70" class="widgetcontainer widget_links"><h3 class="widgettitle">KEXP.ORG</h3>
+
+	<ul class='xoxo blogroll'>
+<li><a href="http://www.kexp.org/events/events.asp" title="KEXP Events" target="_blank">KEXP Events</a></li>
+<li><a href="http://kexp.org" target="_blank">KEXP.ORG</a></li>
+<li><a href="http://www.kexp.org/aspnet_client/live.asp" title="Live Performances Archive" target="_blank">Live Performances Archive</a></li>
+<li><a href="http://www.kexp.org/ondemand.asp" title="On Demand Audio" target="_blank">On Demand Audio</a></li>
+<li><a href="http://www.kexp.org/podcasting/podcasting.asp" title="Podcasting" target="_blank">Podcasting</a></li>
+<li><a href="http://www.kexp.org/programming/programming.asp" title="Programming" target="_blank">Programming</a></li>
+<li><a href="http://www.kexp.org/playlist" title="Real Time Playlist" target="_blank">Real Time Playlist</a></li>
+<li><a href="http://www.kexp.org/reviews/reviews.asp" title="Reviews" target="_blank">Reviews</a></li>
+<li><a href="http://www.kexp.org/streamarchive/streamarchive.asp" title="Streaming Archive" target="_blank">Streaming Archive</a></li>
+<li><a href="http://www.kexp.org/support/support.asp" title="Support KEXP" target="_blank">Support KEXP</a></li>
+<li><a href="http://www.kexp.org/programming/instudio.asp" title="Upcoming In Studio Guests" target="_blank">Upcoming In Studio Guests</a></li>
+
+	</ul>
+</li>
+<li id="linkcat-75" class="widgetcontainer widget_links"><h3 class="widgettitle">Music Blogs</h3>
+
+	<ul class='xoxo blogroll'>
+<li><a href="http://www.anotherrainysaturday.com/" onclick="__gaTracker('send', 'event', 'outbound-widget', 'http://www.anotherrainysaturday.com/', 'Another Rainy Saturday');" target="_blank">Another Rainy Saturday</a></li>
+<li><a href="http://www.brooklynvegan.com/" onclick="__gaTracker('send', 'event', 'outbound-widget', 'http://www.brooklynvegan.com/', 'Brooklyn Vegan');" title="Brooklyn Vegan" target="_blank">Brooklyn Vegan</a></li>
+<li><a href="http://do206.com/latest" onclick="__gaTracker('send', 'event', 'outbound-widget', 'http://do206.com/latest', 'Do206');" target="_blank">Do206</a></li>
+<li><a href="http://www.frictionnyc.com/blog" onclick="__gaTracker('send', 'event', 'outbound-widget', 'http://www.frictionnyc.com/blog', 'Friction NYC');" target="_blank">Friction NYC</a></li>
+<li><a href="http://www.gorillavsbear.net/" onclick="__gaTracker('send', 'event', 'outbound-widget', 'http://www.gorillavsbear.net/', 'Gorilla vs. Bear');" title="Gorilla vs. Bear" target="_blank">Gorilla vs. Bear</a></li>
+<li><a href="http://blog.largeheartedboy.com/" onclick="__gaTracker('send', 'event', 'outbound-widget', 'http://blog.largeheartedboy.com/', 'Largehearted Boy');" title="Largehearted Boy">Largehearted Boy</a></li>
+<li><a href="http://music.for-robots.com/" onclick="__gaTracker('send', 'event', 'outbound-widget', 'http://music.for-robots.com/', 'Music For Robots');" title="Music For Robots" target="_blank">Music For Robots</a></li>
+<li><a href="http://www.muzzleofbees.com/" onclick="__gaTracker('send', 'event', 'outbound-widget', 'http://www.muzzleofbees.com/', 'Muzzle of Bees');" target="_blank">Muzzle of Bees</a></li>
+<li><a href="http://www.myoldkentuckyblog.com/" onclick="__gaTracker('send', 'event', 'outbound-widget', 'http://www.myoldkentuckyblog.com/', 'My Old Kentucky Blog');" title="My Old Kentucky Blog" target="_blank">My Old Kentucky Blog</a></li>
+<li><a href="http://www.nadamucho.com/" onclick="__gaTracker('send', 'event', 'outbound-widget', 'http://www.nadamucho.com/', 'Nada Mucho');" target="_blank">Nada Mucho</a></li>
+<li><a href="http://www.nodepression.com/" onclick="__gaTracker('send', 'event', 'outbound-widget', 'http://www.nodepression.com/', 'No Depression');" target="_blank">No Depression</a></li>
+<li><a href="http://www.nwmusicblog.com/" onclick="__gaTracker('send', 'event', 'outbound-widget', 'http://www.nwmusicblog.com/', 'Northwest Music Blog');" target="_blank">Northwest Music Blog</a></li>
+<li><a href="http://www.oxfordamerican.org/" onclick="__gaTracker('send', 'event', 'outbound-widget', 'http://www.oxfordamerican.org/', 'Oxford American');" target="_blank">Oxford American</a></li>
+<li><a href="http://www.productshopnyc.com/" onclick="__gaTracker('send', 'event', 'outbound-widget', 'http://www.productshopnyc.com/', 'Product Shop NYC');" target="_blank">Product Shop NYC</a></li>
+<li><a href="http://radiofreechicago.typepad.com/" onclick="__gaTracker('send', 'event', 'outbound-widget', 'http://radiofreechicago.typepad.com/', 'Radio Free Chicago');" target="_blank">Radio Free Chicago</a></li>
+<li><a href="http://rcrdlbl.com/" onclick="__gaTracker('send', 'event', 'outbound-widget', 'http://rcrdlbl.com/', 'RCRD LBL');" target="_blank">RCRD LBL</a></li>
+<li><a href="http://blogs.seattleweekly.com/reverb/" onclick="__gaTracker('send', 'event', 'outbound-widget', 'http://blogs.seattleweekly.com/reverb/', 'Reverb');" target="_blank">Reverb</a></li>
+<li><a href="http://www.seattleshowgal.com/" onclick="__gaTracker('send', 'event', 'outbound-widget', 'http://www.seattleshowgal.com/', 'Seattle Show Gal');" target="_blank">Seattle Show Gal</a></li>
+<li><a href="http://www.seattlesubsonic.com/" onclick="__gaTracker('send', 'event', 'outbound-widget', 'http://www.seattlesubsonic.com/', 'Seattle Subsonic');" target="_blank">Seattle Subsonic</a></li>
+<li><a href="http://seismic-sound.com/" onclick="__gaTracker('send', 'event', 'outbound-widget', 'http://seismic-sound.com/', 'Seismic-Sound');" target="_blank">Seismic-Sound</a></li>
+<li><a href="http://shelvesofvinyl.blogspot.com/" onclick="__gaTracker('send', 'event', 'outbound-widget', 'http://shelvesofvinyl.blogspot.com/', 'Shelves of Vinyl');" target="_blank">Shelves of Vinyl</a></li>
+<li><a href="http://www.somuchsilence.com/" onclick="__gaTracker('send', 'event', 'outbound-widget', 'http://www.somuchsilence.com/', 'So Much Silence');" title="So Much Silence" target="_blank">So Much Silence</a></li>
+<li><a href="http://www.sonicitchmusic.com/" onclick="__gaTracker('send', 'event', 'outbound-widget', 'http://www.sonicitchmusic.com/', 'Sonic Itch Music');" target="_blank">Sonic Itch Music</a></li>
+<li><a href="http://www.soundonthesound.com/" onclick="__gaTracker('send', 'event', 'outbound-widget', 'http://www.soundonthesound.com/', 'Sound on the Sound');" target="_blank">Sound on the Sound</a></li>
+<li><a href="http://stereogum.com/" onclick="__gaTracker('send', 'event', 'outbound-widget', 'http://stereogum.com/', 'Stereogum');" title="Stereogum" target="_blank">Stereogum</a></li>
+<li><a href="http://finestkiss.wordpress.com/" onclick="__gaTracker('send', 'event', 'outbound-widget', 'http://finestkiss.wordpress.com/', 'The Finest Kiss');" target="_blank">The Finest Kiss</a></li>
+<li><a href="http://www.threeimaginarygirls.com/" onclick="__gaTracker('send', 'event', 'outbound-widget', 'http://www.threeimaginarygirls.com/', 'Three Imaginary Girls');" target="_blank">Three Imaginary Girls</a></li>
+<li><a href="http://youaintnopicasso.com/" onclick="__gaTracker('send', 'event', 'outbound-widget', 'http://youaintnopicasso.com/', 'You Aint No Picasso');" title="You Aint No Picasso" target="_blank">You Aint No Picasso</a></li>
+
+	</ul>
+</li>
+<li id="linkcat-73" class="widgetcontainer widget_links"><h3 class="widgettitle">Northwest Music Spotlight</h3>
+
+	<ul class='xoxo blogroll'>
+<li><a href="http://absolutemonarchs.bandcamp.com/" onclick="__gaTracker('send', 'event', 'outbound-widget', 'http://absolutemonarchs.bandcamp.com/', 'Absolute Monarchs');" target="_blank">Absolute Monarchs</a></li>
+<li><a href="http://getgrynch.com/" onclick="__gaTracker('send', 'event', 'outbound-widget', 'http://getgrynch.com/', 'Grynch');" target="_blank">Grynch</a></li>
+<li><a href="http://www.dandywarhols.com/" onclick="__gaTracker('send', 'event', 'outbound-widget', 'http://www.dandywarhols.com/', 'The Dandy Warhols');">The Dandy Warhols</a></li>
+<li><a href="http://theshins.com/" onclick="__gaTracker('send', 'event', 'outbound-widget', 'http://theshins.com/', 'The Shins');" target="_blank">The Shins</a></li>
+<li><a href="http://www.theesatisfaction.com/" onclick="__gaTracker('send', 'event', 'outbound-widget', 'http://www.theesatisfaction.com/', 'THEESatisfaction');" target="_blank">THEESatisfaction</a></li>
+
+	</ul>
+</li>
+		</ul>
+	</div><!-- #secondary .aside -->
+	
+    </div><!-- #main -->
+    
+    
+
+	<div id="footer">
+        
+<div id="kexp_footer" class="footer">
+			<span class="footerleft">
+			<a href="http://kexp.org/about/email.asp?email=dj">DJ Request</a> 
+			| <a href="http://kexp.org/about/privacy.asp">Privacy / Terms</a> 
+			| <a href="http://kexp.org/about/help.asp">Help</a> 
+			| KEXP is licensed to the 
+			<a target="_new" href="http://www.washington.edu">University of Washington</a></span>
+			<span class="footerright">Copyright 2011 KEXP All rights reserved</span>
+			<div style="clear: both;"/> 
+		</div>
+
+        <div id="siteinfo">        
+    				</div><!-- #siteinfo -->
+	</div><!-- #footer -->
+	
+  
+
+</div><!-- #wrapper .hfeed -->
+
+
+</body>
+</html>
